@@ -226,67 +226,43 @@ function searchProducts() {
 /* ==========================================
    ADD TO WISHLIST
 ========================================== */
-
-function addToWishlist(name, button) {
+function addToWishlist(name, price, button) {
 
     let wishlist =
-        JSON.parse(
-            localStorage.getItem("wishlist")
-        ) || [];
+        JSON.parse(localStorage.getItem("wishlist")) || [];
 
+    let existingProduct = wishlist.find(function(product) {
+        return product && product.name === name;
+    });
 
-    /* Check if product already exists */
+    if (existingProduct) {
 
-    if (wishlist.includes(name)) {
+        wishlist = wishlist.filter(function(product) {
+            return product.name !== name;
+        });
 
-        alert(
-            name +
-            " is already in your wishlist!"
-        );
+        button.classList.remove("active");
+        button.innerHTML = "♡";
 
+        alert(name + " removed from wishlist!");
 
-        if (button) {
+    } else {
 
-            button.innerHTML = "♥";
+        wishlist.push({
+            name: name,
+            price: price
+        });
 
-            button.style.color = "#d45b5b";
+        button.classList.add("active");
+        button.innerHTML = "♥";
 
-        }
-
-        return;
-
+        alert(name + " added to wishlist!");
     }
-
-
-    /* Add product */
-
-    wishlist.push(name);
-
-
-    /* Save wishlist */
 
     localStorage.setItem(
         "wishlist",
         JSON.stringify(wishlist)
     );
-
-
-    /* Change heart */
-
-    if (button) {
-
-        button.innerHTML = "♥";
-
-        button.style.color = "#d45b5b";
-
-    }
-
-
-    alert(
-        name +
-        " added to wishlist!"
-    );
-
 }
 
 

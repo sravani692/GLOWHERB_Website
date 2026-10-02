@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>GlowHerb | Products</title>
+    <title>GlowHerb - Products</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -21,23 +16,25 @@
         body {
             font-family: Arial, sans-serif;
             background: #faf8f2;
-            color: #2f4638;
+            color: #333;
         }
 
-        /* =========================
-           NAVBAR
-        ========================= */
+        /* NAVBAR */
 
-        .navbar {
-            background: #ffffff;
-            padding: 18px 7%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        header {
+            background: white;
+            padding: 18px 6%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
         }
 
         .logo {
@@ -47,60 +44,69 @@
             text-decoration: none;
         }
 
-        .nav {
-            list-style: none;
+        .nav-links {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 24px;
+            list-style: none;
         }
 
-        .nav li a {
+        .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: #444;
             font-size: 15px;
             font-weight: 500;
-            transition: 0.3s;
         }
 
-        .nav li a:hover {
+        .nav-links a:hover {
             color: #356859;
         }
 
-        /* =========================
-           PAGE HEADER
-        ========================= */
+        .cart-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 21px;
+            height: 21px;
+            padding: 0 6px;
+            margin-left: 4px;
+            border-radius: 50px;
+            background: #356859;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* PAGE HEADER */
 
         .page-header {
             text-align: center;
-            padding: 65px 20px 45px;
-            background: #eef4e8;
+            padding: 65px 20px 40px;
         }
 
         .page-header h1 {
             font-size: 42px;
-            color: #315c48;
+            color: #356859;
             margin-bottom: 12px;
         }
 
         .page-header p {
-            color: #666;
             font-size: 17px;
+            color: #777;
         }
 
-        /* =========================
-           SEARCH
-        ========================= */
+        /* SEARCH */
 
         .search-section {
-            text-align: center;
-            padding: 30px 20px 10px;
+            width: 90%;
+            max-width: 700px;
+            margin: 0 auto 35px;
         }
 
         .search-box {
             width: 100%;
-            max-width: 550px;
-            padding: 15px 20px;
-            border: 1px solid #d5d5d5;
+            padding: 16px 20px;
+            border: 1px solid #ddd;
             border-radius: 30px;
             font-size: 16px;
             outline: none;
@@ -111,23 +117,22 @@
             border-color: #356859;
         }
 
-        /* =========================
-           CATEGORIES
-        ========================= */
+        /* CATEGORY */
 
-        .categories {
+        .category-section {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 12px;
-            padding: 25px 20px 40px;
+            margin-bottom: 45px;
+            padding: 0 20px;
         }
 
         .category-btn {
+            padding: 11px 22px;
             border: 1px solid #356859;
             background: white;
             color: #356859;
-            padding: 11px 22px;
             border-radius: 25px;
             cursor: pointer;
             font-size: 14px;
@@ -140,52 +145,40 @@
             color: white;
         }
 
-        /* =========================
-           PRODUCTS
-        ========================= */
+        /* PRODUCTS */
 
         .products-container {
-            width: 86%;
+            width: 90%;
             max-width: 1250px;
             margin: auto;
-            padding-bottom: 70px;
-        }
-
-        .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 28px;
+            padding-bottom: 70px;
         }
-
-        /* =========================
-           PRODUCT CARD
-        ========================= */
 
         .shop-product-card {
             background: white;
-            border-radius: 18px;
-            padding: 15px;
+            border-radius: 16px;
+            overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.07);
             transition: 0.3s;
             position: relative;
         }
 
         .shop-product-card:hover {
-            transform: translateY(-7px);
+            transform: translateY(-6px);
             box-shadow: 0 10px 28px rgba(0,0,0,0.12);
         }
 
-        /* =========================
-           PRODUCT IMAGE
-        ========================= */
-
         .product-image {
             width: 100%;
-            height: 240px;
+            height: 250px;
+            background: #f5f2e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
-            border-radius: 15px;
-            background: #f3f0e8;
-            margin-bottom: 18px;
         }
 
         .product-image img {
@@ -193,306 +186,280 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: 0.4s ease;
         }
 
-        .shop-product-card:hover
-        .product-image img {
-            transform: scale(1.06);
+        .product-content {
+            padding: 20px;
         }
 
-        /* =========================
-           BADGE
-        ========================= */
-
-        .badge {
-            position: absolute;
-            top: 25px;
-            left: 25px;
-            background: #356859;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            z-index: 2;
-        }
-
-        .badge.new {
-            background: #b88746;
-        }
-
-        /* =========================
-           PRODUCT INFO
-        ========================= */
-
-        .product-info h3 {
+        .product-content h3 {
+            color: #333;
             font-size: 19px;
             margin-bottom: 8px;
-            color: #294c3a;
         }
 
-        .product-info h3 a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .product-info h3 a:hover {
-            color: #356859;
+        .category-name {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
         .rating {
-            color: #d39a38;
+            color: #e5a400;
             font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .reviews {
-            color: #777;
-            font-size: 13px;
-            margin-left: 5px;
+            margin-bottom: 10px;
         }
 
         .price {
-            font-size: 20px;
-            font-weight: bold;
             color: #356859;
-            margin: 12px 0 15px;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
-
-        /* =========================
-           BUTTONS
-        ========================= */
 
         .product-actions {
             display: flex;
             gap: 8px;
         }
 
-        .cart-btn {
+        .add-cart-btn {
             flex: 1;
+            padding: 12px 10px;
             border: none;
             background: #356859;
             color: white;
-            padding: 12px 8px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
-            transition: 0.3s;
+            font-weight: bold;
         }
 
-        .cart-btn:hover {
-            background: #294f40;
+        .add-cart-btn:hover {
+            background: #294f43;
         }
+
+        /* WISHLIST */
 
         .wishlist-btn {
             width: 48px;
             height: 42px;
-            border: 1px solid #356859;
+            border: 1px solid #d8d8d8;
             background: white;
-            color: #356859;
+            color: #777;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 22px;
-            transition: 0.2s;
+            font-size: 23px;
+            transition: 0.25s;
         }
 
         .wishlist-btn:hover {
-            background: #eef4e8;
-            transform: scale(1.05);
+            background: #fff1f2;
+            color: #e63946;
+            border-color: #e63946;
         }
 
-        .wishlist-btn.liked {
-            color: #d45b5b;
-            border-color: #d45b5b;
+        .wishlist-btn.active {
+            color: #e63946;
+            background: #fff0f1;
+            border-color: #e63946;
         }
 
-        /* =========================
-           NO PRODUCTS
-        ========================= */
+        /* BADGE */
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #356859;
+            color: white;
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 2;
+        }
+
+        .badge.new {
+            background: #b88945;
+        }
+
+        /* NO PRODUCTS */
 
         #noProducts {
             display: none;
             text-align: center;
-            padding: 50px;
+            padding: 50px 20px;
             color: #777;
             font-size: 18px;
+            grid-column: 1 / -1;
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
+        /* FOOTER */
 
-        .footer {
-            background: #294c3a;
+        footer {
+            background: #294f43;
             color: white;
-            padding: 55px 7% 25px;
+            padding: 50px 6% 25px;
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 50px;
+        .footer-container {
             max-width: 1200px;
             margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
         }
 
-        .footer h2 {
-            margin-bottom: 15px;
+        .footer-box h3 {
+            margin-bottom: 18px;
+            font-size: 20px;
         }
 
-        .footer h3 {
-            margin-bottom: 15px;
-        }
-
-        .footer p {
-            color: #d8e2dc;
+        .footer-box p {
+            color: #d8e3df;
             line-height: 1.7;
+            font-size: 14px;
         }
 
-        .footer ul {
-            list-style: none;
-        }
-
-        .footer ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer ul li a {
-            color: #d8e2dc;
+        .footer-box a {
+            display: block;
+            color: #d8e3df;
             text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 14px;
         }
 
-        .footer ul li a:hover {
+        .footer-box a:hover {
             color: white;
         }
 
         .footer-bottom {
-            text-align: center;
             border-top: 1px solid rgba(255,255,255,0.2);
-            margin-top: 40px;
+            margin-top: 35px;
             padding-top: 20px;
-            color: #d8e2dc;
-            font-size: 14px;
+            text-align: center;
+            color: #d8e3df;
+            font-size: 13px;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+        /* RESPONSIVE */
 
-        @media (max-width: 1000px) {
+        @media (max-width: 1050px) {
 
-            .product-grid {
+            .products-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .nav {
-                gap: 15px;
-            }
-
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 750px) {
 
-            .navbar {
+            nav {
                 flex-direction: column;
-                gap: 15px;
             }
 
-            .nav {
+            .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
             }
 
-            .page-header h1 {
-                font-size: 32px;
+            .products-container {
+                grid-template-columns: repeat(2, 1fr);
             }
 
+            .page-header h1 {
+                font-size: 34px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
             .products-container {
+                grid-template-columns: 1fr;
                 width: 92%;
             }
 
-            .product-grid {
-                grid-template-columns: 1fr;
+            .product-image {
+                height: 280px;
             }
 
-            .footer-content {
+            .footer-container {
                 grid-template-columns: 1fr;
-                gap: 30px;
             }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
 
-<!-- =========================
-     NAVBAR
-========================= -->
+<!-- ================= NAVBAR ================= -->
 
-<header class="navbar">
+<header>
 
-    <a href="index.html" class="logo">
-        GlowHerb
-    </a>
+    <nav>
 
-    <ul class="nav">
+        <a href="index.html" class="logo">
+            GlowHerb
+        </a>
 
-        <li>
-            <a href="index.html">Home</a>
-        </li>
+        <ul class="nav-links">
 
-        <li>
-            <a href="products.html">Products</a>
-        </li>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
 
-        <li>
-            <a href="about.html">About</a>
-        </li>
+            <li>
+                <a href="products.html">Products</a>
+            </li>
 
-        <li>
-            <a href="contact.html">Contact</a>
-        </li>
+            <li>
+                <a href="about.html">About</a>
+            </li>
 
-        <li>
-            <a href="cart.html">Cart</a>
-        </li>
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
 
-        <li>
-            <a href="wishlist.html">Wishlist</a>
-        </li>
+            <li>
+                <a href="cart.html">
+                    Cart
+                    <span id="cartCount" class="cart-count">0</span>
+                </a>
+            </li>
 
-        <li>
-            <a href="account.html">My Account</a>
-        </li>
+            <li>
+                <a href="wishlist.html">Wishlist</a>
+            </li>
 
-    </ul>
+            <li>
+                <a href="account.html">My Account</a>
+            </li>
+
+        </ul>
+
+    </nav>
 
 </header>
 
 
-<!-- =========================
-     PAGE HEADER
-========================= -->
+<!-- ================= PAGE HEADER ================= -->
 
 <section class="page-header">
 
-    <h1>Our Herbal Collection</h1>
+    <h1>Our Products</h1>
 
     <p>
-        Natural beauty inspired by the goodness of herbs.
+        Discover natural and herbal beauty products made for your everyday care.
     </p>
 
 </section>
 
 
-<!-- =========================
-     SEARCH
-========================= -->
+<!-- ================= SEARCH ================= -->
 
 <section class="search-section">
 
@@ -507,11 +474,9 @@
 </section>
 
 
-<!-- =========================
-     CATEGORIES
-========================= -->
+<!-- ================= CATEGORY BUTTONS ================= -->
 
-<div class="categories">
+<section class="category-section">
 
     <button
         class="category-btn active"
@@ -543,580 +508,530 @@
         Body
     </button>
 
-</div>
+</section>
 
 
-<!-- =========================
-     PRODUCTS
-========================= -->
+<!-- ================= PRODUCTS ================= -->
 
 <section class="products-container">
 
-    <div class="product-grid">
 
+    <!-- 1. HERBAL FACE POWDER -->
 
-        <!-- 1. HERBAL FACE POWDER -->
+    <div
+        class="shop-product-card"
+        data-name="Herbal Face Powder"
+        data-category="face">
 
-        <div
-            class="shop-product-card"
-            data-category="face"
-            data-name="Herbal Face Powder">
+        <span class="badge">
+            Popular
+        </span>
 
-            <span class="badge">
-                Popular
-            </span>
+        <div class="product-image">
 
-            <div class="product-image">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlNPXxjbjPH6I9CzUcikBup8rhagsNRQUL-su1qIXGRQ&s=10"
+                alt="Herbal Face Powder"
+            >
 
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlNPXxjbjPH6I9CzUcikBup8rhagsNRQUL-su1qIXGRQ&s=10"
-                    alt="Herbal Face Powder"
-                >
+        </div>
 
-            </div>
+        <div class="product-content">
 
-            <div class="product-info">
+            <h3>
+                Herbal Face Powder
+            </h3>
 
-                <h3>
-                    <a href="product-details.html">
-                        Herbal Face Powder
-                    </a>
-                </h3>
+            <p class="category-name">
+                Face
+            </p>
 
-                <div class="rating">
-                    ★★★★★
-                    <span class="reviews">
-                        (24 reviews)
-                    </span>
-                </div>
+            <p class="rating">
+                ★★★★★ (24)
+            </p>
 
-                <div class="price">
-                    ₹299
-                </div>
+            <p class="price">
+                ₹299
+            </p>
 
-                <div class="product-actions">
+            <div class="product-actions">
 
-                    <button
-                        class="cart-btn"
-                        onclick="addToCart('Herbal Face Powder', 299)">
-                        Add to Cart
-                    </button>
+                <button
+                    class="wishlist-btn"
+                    data-name="Herbal Face Powder"
+                    onclick="addToWishlist('Herbal Face Powder', 299, this)">
+                    ♡
+                </button>
 
-                    <button
-                        class="wishlist-btn"
-                        onclick="addToWishlist('Herbal Face Powder', this)">
-                        ♡
-                    </button>
-
-                </div>
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('Herbal Face Powder', 299)">
+                    Add to Cart
+                </button>
 
             </div>
 
         </div>
 
+    </div>
 
-        <!-- 2. ROSE HERBAL CREAM -->
 
-        <div
-            class="shop-product-card"
-            data-category="skin"
-            data-name="Rose Herbal Cream">
+    <!-- 2. ROSE HERBAL CREAM -->
 
-            <div class="product-image">
+    <div
+        class="shop-product-card"
+        data-name="Rose Herbal Cream"
+        data-category="skin">
 
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlZIPCEudwaJ6YuY3DIQvdjZsKfqi0HrUOlmPJVa4z7g&s"
-                    alt="Rose Herbal Cream"
-                >
+        <div class="product-image">
 
-            </div>
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlZIPCEudwaJ6YuY3DIQvdjZsKfqi0HrUOlmPJVa4z7g&s"
+                alt="Rose Herbal Cream"
+            >
 
-            <div class="product-info">
+        </div>
 
-                <h3>
-                    <a href="product-details.html">
-                        Rose Herbal Cream
-                    </a>
-                </h3>
+        <div class="product-content">
 
-                <div class="rating">
-                    ★★★★★
-                    <span class="reviews">
-                        (18 reviews)
-                    </span>
-                </div>
+            <h3>
+                Rose Herbal Cream
+            </h3>
 
-                <div class="price">
-                    ₹349
-                </div>
+            <p class="category-name">
+                Skin
+            </p>
 
-                <div class="product-actions">
+            <p class="rating">
+                ★★★★★ (18)
+            </p>
 
-                    <button
-                        class="cart-btn"
-                        onclick="addToCart('Rose Herbal Cream', 349)">
-                        Add to Cart
-                    </button>
+            <p class="price">
+                ₹349
+            </p>
 
-                    <button
-                        class="wishlist-btn"
-                        onclick="addToWishlist('Rose Herbal Cream', this)">
-                        ♡
-                    </button>
+            <div class="product-actions">
 
-                </div>
+                <button
+                    class="wishlist-btn"
+                    data-name="Rose Herbal Cream"
+                    onclick="addToWishlist('Rose Herbal Cream', 349, this)">
+                    ♡
+                </button>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('Rose Herbal Cream', 349)">
+                    Add to Cart
+                </button>
 
             </div>
 
         </div>
 
+    </div>
 
-        <!-- 3. HERBAL HAIR OIL -->
 
-        <div
-            class="shop-product-card"
-            data-category="hair"
-            data-name="Herbal Hair Oil">
+    <!-- 3. HERBAL HAIR OIL -->
 
-            <span class="badge">
-                Bestseller
-            </span>
+    <div
+        class="shop-product-card"
+        data-name="Herbal Hair Oil"
+        data-category="hair">
 
-            <div class="product-image">
+        <span class="badge">
+            Bestseller
+        </span>
 
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTChn31-YsgSyecou66Lh6prMOEFir3QmkPQ3OW1TYmJA&s"
-                    alt="Herbal Hair Oil"
-                >
+        <div class="product-image">
 
-            </div>
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTChn31-YsgSyecou66Lh6prMOEFir3QmkPQ3OW1TYmJA&s"
+                alt="Herbal Hair Oil"
+            >
 
-            <div class="product-info">
+        </div>
 
-                <h3>
-                    <a href="product-details.html">
-                        Herbal Hair Oil
-                    </a>
-                </h3>
+        <div class="product-content">
 
-                <div class="rating">
-                    ★★★★★
-                    <span class="reviews">
-                        (32 reviews)
-                    </span>
-                </div>
+            <h3>
+                Herbal Hair Oil
+            </h3>
 
-                <div class="price">
-                    ₹399
-                </div>
+            <p class="category-name">
+                Hair
+            </p>
 
-                <div class="product-actions">
+            <p class="rating">
+                ★★★★★ (32)
+            </p>
 
-                    <button
-                        class="cart-btn"
-                        onclick="addToCart('Herbal Hair Oil', 399)">
-                        Add to Cart
-                    </button>
+            <p class="price">
+                ₹399
+            </p>
 
-                    <button
-                        class="wishlist-btn"
-                        onclick="addToWishlist('Herbal Hair Oil', this)">
-                        ♡
-                    </button>
+            <div class="product-actions">
 
-                </div>
+                <button
+                    class="wishlist-btn"
+                    data-name="Herbal Hair Oil"
+                    onclick="addToWishlist('Herbal Hair Oil', 399, this)">
+                    ♡
+                </button>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('Herbal Hair Oil', 399)">
+                    Add to Cart
+                </button>
 
             </div>
 
         </div>
 
+    </div>
 
-        <!-- 4. NEEM BODY SCRUB -->
 
-        <div
-            class="shop-product-card"
-            data-category="body"
-            data-name="Neem Body Scrub">
+    <!-- 4. NEEM BODY SCRUB -->
 
-            <div class="product-image">
+    <div
+        class="shop-product-card"
+        data-name="Neem Body Scrub"
+        data-category="body">
 
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsRPvSOndncdkDQ1PsW2mw-Use1zsET8Bz9TQ4KHgz7g&s=10"
-                    alt="Neem Body Scrub"
-                >
+        <div class="product-image">
 
-            </div>
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsRPvSOndncdkDQ1PsW2mw-Use1zsET8Bz9TQ4KHgz7g&s=10"
+                alt="Neem Body Scrub"
+            >
 
-            <div class="product-info">
+        </div>
 
-                <h3>
-                    <a href="product-details.html">
-                        Neem Body Scrub
-                    </a>
-                </h3>
+        <div class="product-content">
 
-                <div class="rating">
-                    ★★★★★
-                    <span class="reviews">
-                        (16 reviews)
-                    </span>
-                </div>
+            <h3>
+                Neem Body Scrub
+            </h3>
 
-                <div class="price">
-                    ₹279
-                </div>
+            <p class="category-name">
+                Body
+            </p>
 
-                <div class="product-actions">
+            <p class="rating">
+                ★★★★★ (16)
+            </p>
 
-                    <button
-                        class="cart-btn"
-                        onclick="addToCart('Neem Body Scrub', 279)">
-                        Add to Cart
-                    </button>
+            <p class="price">
+                ₹279
+            </p>
 
-                    <button
-                        class="wishlist-btn"
-                        onclick="addToWishlist('Neem Body Scrub', this)">
-                        ♡
-                    </button>
+            <div class="product-actions">
 
-                </div>
+                <button
+                    class="wishlist-btn"
+                    data-name="Neem Body Scrub"
+                    onclick="addToWishlist('Neem Body Scrub', 279, this)">
+                    ♡
+                </button>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('Neem Body Scrub', 279)">
+                    Add to Cart
+                </button>
 
             </div>
 
         </div>
 
+    </div>
 
-        <!-- 5. ALOE FACE GEL -->
 
-        <div
-            class="shop-product-card"
-            data-category="face"
-            data-name="Aloe Face Gel">
+    <!-- 5. ALOE FACE GEL -->
 
-            <div class="product-image">
+    <div
+        class="shop-product-card"
+        data-name="Aloe Face Gel"
+        data-category="face">
 
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG_GAJhB9DFfA7eRcF2cw6TBQVV1kiGZ0d4QGWmfQpyQ&s"
-                    alt="Aloe Face Gel"
-                >
+        <div class="product-image">
 
-            </div>
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG_GAJhB9DFfA7eRcF2cw6TBQVV1kiGZ0d4QGWmfQpyQ&s"
+                alt="Aloe Face Gel"
+            >
 
-            <div class="product-info">
+        </div>
 
-                <h3>
-                    <a href="product-details.html">
-                        Aloe Face Gel
-                    </a>
-                </h3>
+        <div class="product-content">
 
-                <div class="rating">
-                    ★★★★★
-                    <span class="reviews">
-                        (27 reviews)
-                    </span>
-                </div>
+            <h3>
+                Aloe Face Gel
+            </h3>
 
-                <div class="price">
-                    ₹329
-                </div>
+            <p class="category-name">
+                Face
+            </p>
 
-                <div class="product-actions">
+            <p class="rating">
+                ★★★★★ (27)
+            </p>
 
-                    <button
-                        class="cart-btn"
-                        onclick="addToCart('Aloe Face Gel', 329)">
-                        Add to Cart
-                    </button>
+            <p class="price">
+                ₹329
+            </p>
 
-                    <button
-                        class="wishlist-btn"
-                        onclick="addToWishlist('Aloe Face Gel', this)">
-                        ♡
-                    </button>
+            <div class="product-actions">
 
-                </div>
+                <button
+                    class="wishlist-btn"
+                    data-name="Aloe Face Gel"
+                    onclick="addToWishlist('Aloe Face Gel', 329, this)">
+                    ♡
+                </button>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('Aloe Face Gel', 329)">
+                    Add to Cart
+                </button>
 
             </div>
 
         </div>
 
+    </div>
 
-        <!-- 6. TURMERIC GLOW MASK -->
 
-        <div
-            class="shop-product-card"
-            data-category="skin"
-            data-name="Turmeric Glow Mask">
+    <!-- 6. TURMERIC GLOW MASK -->
 
-            <span class="badge new">
-                New
-            </span>
+    <div
+        class="shop-product-card"
+        data-name="Turmeric Glow Mask"
+        data-category="skin">
 
-            <div class="product-image">
+        <span class="badge new">
+            New
+        </span>
 
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQroCTt0hyo6QmTR_OoLbaa2XeKbjiqdY_B5GiTilGGKw&s=10"
-                    alt="Turmeric Glow Mask"
-                >
+        <div class="product-image">
 
-            </div>
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQroCTt0hyo6QmTR_OoLbaa2XeKbjiqdY_B5GiTilGGKw&s=10"
+                alt="Turmeric Glow Mask"
+            >
 
-            <div class="product-info">
+        </div>
 
-                <h3>
-                    <a href="product-details.html">
-                        Turmeric Glow Mask
-                    </a>
-                </h3>
+        <div class="product-content">
 
-                <div class="rating">
-                    ★★★★★
-                    <span class="reviews">
-                        (21 reviews)
-                    </span>
-                </div>
+            <h3>
+                Turmeric Glow Mask
+            </h3>
 
-                <div class="price">
-                    ₹379
-                </div>
+            <p class="category-name">
+                Skin
+            </p>
 
-                <div class="product-actions">
+            <p class="rating">
+                ★★★★★ (21)
+            </p>
 
-                    <button
-                        class="cart-btn"
-                        onclick="addToCart('Turmeric Glow Mask', 379)">
-                        Add to Cart
-                    </button>
+            <p class="price">
+                ₹379
+            </p>
 
-                    <button
-                        class="wishlist-btn"
-                        onclick="addToWishlist('Turmeric Glow Mask', this)">
-                        ♡
-                    </button>
+            <div class="product-actions">
 
-                </div>
+                <button
+                    class="wishlist-btn"
+                    data-name="Turmeric Glow Mask"
+                    onclick="addToWishlist('Turmeric Glow Mask', 379, this)">
+                    ♡
+                </button>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('Turmeric Glow Mask', 379)">
+                    Add to Cart
+                </button>
 
             </div>
 
         </div>
 
+    </div>
 
-        <!-- 7. AMLA HAIR SERUM -->
 
-        <div
-            class="shop-product-card"
-            data-category="hair"
-            data-name="Amla Hair Serum">
+    <!-- 7. AMLA HAIR SERUM -->
 
-            <div class="product-image">
+    <div
+        class="shop-product-card"
+        data-name="Amla Hair Serum"
+        data-category="hair">
 
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXXQjsYiYeZhdb4OSDiE7cIADjf6LnVVhhQ9aerqqoLQ&s=10"
-                    alt="Amla Hair Serum"
-                >
+        <div class="product-image">
 
-            </div>
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXXQjsYiYeZhdb4OSDiE7cIADjf6LnVVhhQ9aerqqoLQ&s=10"
+                alt="Amla Hair Serum"
+            >
 
-            <div class="product-info">
+        </div>
 
-                <h3>
-                    <a href="product-details.html">
-                        Amla Hair Serum
-                    </a>
-                </h3>
+        <div class="product-content">
 
-                <div class="rating">
-                    ★★★★★
-                    <span class="reviews">
-                        (14 reviews)
-                    </span>
-                </div>
+            <h3>
+                Amla Hair Serum
+            </h3>
 
-                <div class="price">
-                    ₹449
-                </div>
+            <p class="category-name">
+                Hair
+            </p>
 
-                <div class="product-actions">
+            <p class="rating">
+                ★★★★★ (14)
+            </p>
 
-                    <button
-                        class="cart-btn"
-                        onclick="addToCart('Amla Hair Serum', 449)">
-                        Add to Cart
-                    </button>
+            <p class="price">
+                ₹449
+            </p>
 
-                    <button
-                        class="wishlist-btn"
-                        onclick="addToWishlist('Amla Hair Serum', this)">
-                        ♡
-                    </button>
+            <div class="product-actions">
 
-                </div>
+                <button
+                    class="wishlist-btn"
+                    data-name="Amla Hair Serum"
+                    onclick="addToWishlist('Amla Hair Serum', 449, this)">
+                    ♡
+                </button>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('Amla Hair Serum', 449)">
+                    Add to Cart
+                </button>
 
             </div>
 
         </div>
 
+    </div>
 
-        <!-- 8. SANDALWOOD BODY LOTION -->
 
-        <div
-            class="shop-product-card"
-            data-category="body"
-            data-name="Sandalwood Body Lotion">
+    <!-- 8. SANDALWOOD BODY LOTION -->
 
-            <div class="product-image">
+    <div
+        class="shop-product-card"
+        data-name="Sandalwood Body Lotion"
+        data-category="body">
 
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoY1R7y7E48O2o6ID4LT_a1xLciwm7qNx3wDuEMatw9w&s"
-                    alt="Sandalwood Body Lotion"
-                >
+        <div class="product-image">
 
-            </div>
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoY1R7y7E48O2o6ID4LT_a1xLciwm7qNx3wDuEMatw9w&s"
+                alt="Sandalwood Body Lotion"
+            >
 
-            <div class="product-info">
+        </div>
 
-                <h3>
-                    <a href="product-details.html">
-                        Sandalwood Body Lotion
-                    </a>
-                </h3>
+        <div class="product-content">
 
-                <div class="rating">
-                    ★★★★★
-                    <span class="reviews">
-                        (19 reviews)
-                    </span>
-                </div>
+            <h3>
+                Sandalwood Body Lotion
+            </h3>
 
-                <div class="price">
-                    ₹429
-                </div>
+            <p class="category-name">
+                Body
+            </p>
 
-                <div class="product-actions">
+            <p class="rating">
+                ★★★★★ (19)
+            </p>
 
-                    <button
-                        class="cart-btn"
-                        onclick="addToCart('Sandalwood Body Lotion', 429)">
-                        Add to Cart
-                    </button>
+            <p class="price">
+                ₹429
+            </p>
 
-                    <button
-                        class="wishlist-btn"
-                        onclick="addToWishlist('Sandalwood Body Lotion', this)">
-                        ♡
-                    </button>
+            <div class="product-actions">
 
-                </div>
+                <button
+                    class="wishlist-btn"
+                    data-name="Sandalwood Body Lotion"
+                    onclick="addToWishlist('Sandalwood Body Lotion', 429, this)">
+                    ♡
+                </button>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('Sandalwood Body Lotion', 429)">
+                    Add to Cart
+                </button>
 
             </div>
 
         </div>
-
 
     </div>
 
 
     <div id="noProducts">
-        No products found. Try another search.
+        No products found.
     </div>
 
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- ================= FOOTER ================= -->
 
-<footer class="footer">
+<footer>
 
-    <div class="footer-content">
+    <div class="footer-container">
 
-        <div>
+        <div class="footer-box">
 
-            <h2>
-                GlowHerb
-            </h2>
+            <h3>GlowHerb</h3>
 
             <p>
-                Natural beauty inspired by herbs,
-                created for your everyday glow.
+                Natural beauty inspired by herbal ingredients.
+                Discover simple and gentle products for your
+                everyday beauty routine.
             </p>
 
         </div>
 
 
-        <div>
+        <div class="footer-box">
 
-            <h3>
-                Quick Links
-            </h3>
+            <h3>Quick Links</h3>
 
-            <ul>
-
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="products.html">
-                        Products
-                    </a>
-                </li>
-
-                <li>
-                    <a href="about.html">
-                        About
-                    </a>
-                </li>
-
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
-
-            </ul>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
 
         </div>
 
 
-        <div>
+        <div class="footer-box">
 
-            <h3>
-                Customer
-            </h3>
+            <h3>Customer</h3>
 
-            <ul>
+            <a href="cart.html">Cart</a>
+            <a href="wishlist.html">Wishlist</a>
+            <a href="account.html">My Account</a>
 
-                <li>
-                    <a href="cart.html">
-                        My Cart
-                    </a>
-                </li>
+        </div>
 
-                <li>
-                    <a href="wishlist.html">
-                        Wishlist
-                    </a>
-                </li>
 
-                <li>
-                    <a href="account.html">
-                        My Account
-                    </a>
-                </li>
+        <div class="footer-box">
 
-                <li>
-                    <a href="orders.html">
-                        My Orders
-                    </a>
-                </li>
+            <h3>Support</h3>
 
-            </ul>
+            <a href="contact.html">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
 
         </div>
 
@@ -1132,24 +1047,24 @@
 </footer>
 
 
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
 
-    /* =========================
-       ADD TO CART
-    ========================= */
+    /* CART */
 
     function addToCart(name, price) {
 
         let cart =
-            JSON.parse(
-                localStorage.getItem("cart")
-            ) || [];
+            JSON.parse(localStorage.getItem("cart")) || [];
 
         let existingProduct =
-            cart.find(
-                product =>
-                product.name === name
-            );
+            cart.find(function(product) {
+
+                return product.name === name;
+
+            });
+
 
         if (existingProduct) {
 
@@ -1160,242 +1075,326 @@
             cart.push({
 
                 name: name,
-
                 price: price,
-
                 quantity: 1
 
             });
 
         }
 
+
         localStorage.setItem(
             "cart",
             JSON.stringify(cart)
         );
 
-        alert(
-            name +
-            " added to cart!"
-        );
+
+        updateCartCount();
+
+
+        alert(name + " added to cart!");
 
     }
 
 
-    /* =========================
-       ADD TO WISHLIST
-    ========================= */
+    /* CART COUNT */
 
-    function addToWishlist(name, button) {
+    function updateCartCount() {
 
-        let wishlist =
-            JSON.parse(
-                localStorage.getItem("wishlist")
-            ) || [];
+        let cart =
+            JSON.parse(localStorage.getItem("cart")) || [];
 
-        if (
-            wishlist.includes(name)
-        ) {
+        let totalQuantity = 0;
 
-            alert(
-                name +
-                " is already in your wishlist!"
-            );
 
-            button.innerHTML = "♥";
+        cart.forEach(function(product) {
 
-            button.classList.add(
-                "liked"
-            );
+            totalQuantity +=
+                Number(product.quantity) || 1;
 
-            return;
+        });
+
+
+        let cartCount =
+            document.getElementById("cartCount");
+
+
+        if (cartCount) {
+
+            cartCount.textContent =
+                totalQuantity;
 
         }
 
-        wishlist.push(name);
+    }
+
+
+    /* WISHLIST */
+
+    function addToWishlist(name, price, button) {
+
+        let wishlist =
+            JSON.parse(localStorage.getItem("wishlist")) || [];
+
+
+        let existingProduct =
+            wishlist.find(function(product) {
+
+                return product &&
+                       product.name === name;
+
+            });
+
+
+        if (existingProduct) {
+
+            wishlist =
+                wishlist.filter(function(product) {
+
+                    return product &&
+                           product.name !== name;
+
+                });
+
+
+            button.classList.remove("active");
+
+            button.innerHTML = "♡";
+
+
+            alert(
+                name +
+                " removed from wishlist!"
+            );
+
+        } else {
+
+            wishlist.push({
+
+                name: name,
+                price: price
+
+            });
+
+
+            button.classList.add("active");
+
+            button.innerHTML = "♥";
+
+
+            alert(
+                name +
+                " added to wishlist!"
+            );
+
+        }
+
 
         localStorage.setItem(
             "wishlist",
             JSON.stringify(wishlist)
         );
 
-        button.innerHTML = "♥";
-
-        button.classList.add(
-            "liked"
-        );
-
-        alert(
-            name +
-            " added to wishlist!"
-        );
-
     }
 
 
-    /* =========================
-       FILTER PRODUCTS
-    ========================= */
+    /* UPDATE HEARTS */
 
-    function filterProducts(
-        category,
-        button
-    ) {
+    function updateWishlistButtons() {
 
-        const products =
+        let wishlist =
+            JSON.parse(localStorage.getItem("wishlist")) || [];
+
+
+        let wishlistButtons =
             document.querySelectorAll(
-                ".shop-product-card"
+                ".wishlist-btn"
             );
 
-        const buttons =
-            document.querySelectorAll(
-                ".category-btn"
-            );
 
-        buttons.forEach(
-            function(btn) {
+        wishlistButtons.forEach(function(button) {
 
-                btn.classList.remove(
-                    "active"
+            let productName =
+                button.getAttribute(
+                    "data-name"
                 );
 
-            }
-        );
 
-        if (button) {
+            let exists =
+                wishlist.some(function(product) {
 
-            button.classList.add(
-                "active"
-            );
+                    return product &&
+                           product.name === productName;
 
-        }
+                });
 
-        let visibleProducts = 0;
 
-        products.forEach(
-            function(product) {
+            if (exists) {
 
-                const productCategory =
-                    product.getAttribute(
-                        "data-category"
-                    );
+                button.classList.add("active");
 
-                if (
-                    category === "all" ||
-                    productCategory === category
-                ) {
+                button.innerHTML = "♥";
 
-                    product.style.display =
-                        "block";
+            } else {
 
-                    visibleProducts++;
+                button.classList.remove("active");
 
-                } else {
-
-                    product.style.display =
-                        "none";
-
-                }
+                button.innerHTML = "♡";
 
             }
-        );
 
-        const noProducts =
-            document.getElementById(
-                "noProducts"
-            );
-
-        if (visibleProducts === 0) {
-
-            noProducts.style.display =
-                "block";
-
-        } else {
-
-            noProducts.style.display =
-                "none";
-
-        }
+        });
 
     }
 
 
-    /* =========================
-       SEARCH PRODUCTS
-    ========================= */
+    /* SEARCH */
 
     function searchProducts() {
 
-        const searchInput =
-            document.getElementById(
-                "productSearch"
-            );
+        let searchValue =
+            document
+                .getElementById("productSearch")
+                .value
+                .toLowerCase()
+                .trim();
 
-        const searchText =
-            searchInput.value
-            .toLowerCase()
-            .trim();
 
-        const products =
+        let products =
             document.querySelectorAll(
                 ".shop-product-card"
             );
 
-        let visibleProducts = 0;
 
-        products.forEach(
-            function(product) {
+        let found = 0;
 
-                const productName =
-                    product
-                    .getAttribute(
-                        "data-name"
-                    )
+
+        products.forEach(function(product) {
+
+            let productName =
+                product
+                    .getAttribute("data-name")
                     .toLowerCase();
 
-                if (
-                    productName.includes(
-                        searchText
-                    )
-                ) {
 
-                    product.style.display =
-                        "block";
+            if (
+                productName.includes(searchValue)
+            ) {
 
-                    visibleProducts++;
+                product.style.display = "";
 
-                } else {
+                found++;
 
-                    product.style.display =
-                        "none";
+            } else {
 
-                }
+                product.style.display = "none";
 
             }
-        );
 
-        const noProducts =
+        });
+
+
+        let noProducts =
             document.getElementById(
                 "noProducts"
             );
 
-        if (visibleProducts === 0) {
 
-            noProducts.style.display =
-                "block";
+        if (found === 0) {
+
+            noProducts.style.display = "block";
 
         } else {
 
-            noProducts.style.display =
-                "none";
+            noProducts.style.display = "none";
 
         }
 
     }
 
+
+    /* CATEGORY FILTER */
+
+    function filterProducts(category, button) {
+
+        let products =
+            document.querySelectorAll(
+                ".shop-product-card"
+            );
+
+
+        document
+            .getElementById("productSearch")
+            .value = "";
+
+
+        document
+            .querySelectorAll(".category-btn")
+            .forEach(function(btn) {
+
+                btn.classList.remove("active");
+
+            });
+
+
+        button.classList.add("active");
+
+
+        let found = 0;
+
+
+        products.forEach(function(product) {
+
+            let productCategory =
+                product.getAttribute(
+                    "data-category"
+                );
+
+
+            if (
+                category === "all" ||
+                productCategory === category
+            ) {
+
+                product.style.display = "";
+
+                found++;
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+
+        let noProducts =
+            document.getElementById(
+                "noProducts"
+            );
+
+
+        if (found === 0) {
+
+            noProducts.style.display = "block";
+
+        } else {
+
+            noProducts.style.display = "none";
+
+        }
+
+    }
+
+
+    /* PAGE LOAD */
+
+    updateCartCount();
+
+    updateWishlistButtons();
+
 </script>
 
-
 </body>
-
 </html>

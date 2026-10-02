@@ -8,7 +8,8 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Wishlist - GlowHerb</title>
+    <title>Wishlist | GlowHerb</title>
+
 
     <style>
 
@@ -18,11 +19,13 @@
             box-sizing: border-box;
         }
 
+
         body {
-            font-family: Arial, sans-serif;
-            background: #fffaf2;
-            color: #333;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f6ef;
+            color: #26372b;
         }
+
 
         a {
             text-decoration: none;
@@ -30,18 +33,29 @@
         }
 
 
-        /* NAVBAR */
+        /* ================= NAVBAR ================= */
 
         .navbar {
-            background: white;
-            padding: 18px 7%;
+            background: #fffdf8;
+            border-bottom: 1px solid #e8e3d7;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            gap: 25px;
         }
+
 
         .logo {
             font-size: 28px;
@@ -49,103 +63,170 @@
             color: #315c3b;
         }
 
-        .nav {
+
+        .logo span {
+            color: #b48a4b;
+        }
+
+
+        .nav-links {
             display: flex;
+            align-items: center;
             gap: 25px;
-            list-style: none;
+            flex-wrap: wrap;
         }
 
-        .nav a {
-            color: #444;
+
+        .nav-links a {
+            color: #35483b;
+            font-size: 15px;
         }
 
-        .nav a:hover {
+
+        .nav-links a:hover {
             color: #315c3b;
         }
 
-        .login-btn {
+
+        .cart-link {
             background: #315c3b;
-            color: white;
-            padding: 10px 20px;
+            color: white !important;
+
+            padding: 10px 18px;
             border-radius: 25px;
         }
 
 
-        /* PAGE */
+        /* ================= HERO ================= */
 
-        .wishlist-page {
-            max-width: 1100px;
-            margin: auto;
+        .wishlist-hero {
+            max-width: 1200px;
+            margin: 40px auto 30px;
 
-            padding: 60px 20px 80px;
-        }
+            padding: 55px 25px;
 
-        .page-heading {
+            border-radius: 25px;
+
             text-align: center;
-            margin-bottom: 45px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e8eee4,
+                    #f5efe2
+                );
         }
 
-        .page-heading h1 {
-            color: #315c3b;
+
+        .wishlist-hero small {
+            color: #b48a4b;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        .wishlist-hero h1 {
+            margin-top: 12px;
+
             font-size: 42px;
-            margin-bottom: 10px;
-        }
 
-        .page-heading p {
-            color: #777;
+            color: #315c3b;
         }
 
 
-        /* PRODUCTS */
+        .wishlist-hero p {
+            max-width: 600px;
+
+            margin: 15px auto 0;
+
+            line-height: 1.7;
+
+            color: #69736c;
+        }
+
+
+        /* ================= WISHLIST ================= */
+
+        .wishlist-section {
+            max-width: 1200px;
+
+            margin: 40px auto 80px;
+
+            padding: 0 25px;
+        }
+
 
         .wishlist-grid {
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(4, 1fr);
 
             gap: 25px;
         }
 
+
         .wishlist-card {
             background: white;
 
-            border-radius: 15px;
+            border: 1px solid #eee9de;
 
-            overflow: hidden;
+            border-radius: 20px;
+
+            padding: 20px;
 
             box-shadow:
-                0 4px 15px rgba(0,0,0,0.06);
+                0 8px 25px
+                rgba(40,55,43,0.07);
+
+            transition: 0.3s;
         }
 
-        .product-image {
-            height: 220px;
 
-            background: #eef3e9;
+        .wishlist-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 18px 40px
+                rgba(40,55,43,0.14);
+        }
+
+
+        .wishlist-icon {
+            height: 170px;
+
+            border-radius: 15px;
+
+            background: #f3f0e8;
 
             display: flex;
 
+            align-items: center;
             justify-content: center;
 
-            align-items: center;
+            font-size: 55px;
 
-            font-size: 75px;
+            margin-bottom: 18px;
         }
 
-        .product-info {
-            padding: 22px;
+
+        .wishlist-card h3 {
+            color: #293c30;
+
+            font-size: 19px;
+
+            margin-bottom: 8px;
         }
 
-        .product-info h3 {
+
+        .wishlist-price {
             color: #315c3b;
 
-            margin-bottom: 10px;
-        }
-
-        .product-price {
-            color: #8b6239;
-
-            font-size: 20px;
+            font-size: 19px;
 
             font-weight: bold;
 
@@ -153,14 +234,14 @@
         }
 
 
-        /* BUTTONS */
-
-        .card-buttons {
+        .wishlist-actions {
             display: flex;
-            gap: 10px;
+
+            gap: 8px;
         }
 
-        .cart-btn {
+
+        .move-cart-btn {
             flex: 1;
 
             border: none;
@@ -174,52 +255,65 @@
             border-radius: 25px;
 
             cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 13px;
         }
 
+
+        .move-cart-btn:hover {
+            background: #25482d;
+        }
+
+
         .remove-btn {
+            border: 1px solid #ddd5c8;
+
             background: white;
 
-            color: #b05a4a;
+            color: #8b5b5b;
 
-            border: 1px solid #b05a4a;
-
-            padding: 11px 15px;
+            padding: 11px 13px;
 
             border-radius: 25px;
 
             cursor: pointer;
+
+            font-size: 13px;
         }
 
-        .cart-btn:hover {
-            background: #264a30;
-        }
 
         .remove-btn:hover {
-            background: #b05a4a;
+            background: #8b5b5b;
+
             color: white;
         }
 
 
-        /* EMPTY */
+        /* ================= EMPTY ================= */
 
         .empty-wishlist {
             background: white;
 
-            padding: 70px 25px;
+            border-radius: 25px;
 
-            border-radius: 15px;
+            padding: 80px 25px;
 
             text-align: center;
 
             box-shadow:
-                0 4px 15px rgba(0,0,0,0.06);
+                0 8px 25px
+                rgba(40,55,43,0.06);
         }
 
+
         .empty-icon {
-            font-size: 65px;
+            font-size: 60px;
 
             margin-bottom: 20px;
         }
+
 
         .empty-wishlist h2 {
             color: #315c3b;
@@ -227,11 +321,13 @@
             margin-bottom: 10px;
         }
 
+
         .empty-wishlist p {
             color: #777;
 
             margin-bottom: 25px;
         }
+
 
         .shop-btn {
             display: inline-block;
@@ -240,23 +336,35 @@
 
             color: white;
 
-            padding: 13px 28px;
+            padding: 13px 25px;
 
-            border-radius: 30px;
+            border-radius: 25px;
+
+            font-weight: bold;
         }
 
 
-        /* FOOTER */
+        .shop-btn:hover {
+            background: #25482d;
+        }
 
-        .footer {
-            background: #202d24;
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #26372b;
 
             color: white;
-
-            padding: 60px 7% 20px;
         }
 
-        .footer-grid {
+
+        .footer-container {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 55px 25px 30px;
+
             display: grid;
 
             grid-template-columns:
@@ -265,79 +373,122 @@
             gap: 40px;
         }
 
-        .footer-brand h2 {
+
+        .footer-logo {
+            font-size: 28px;
+
+            font-weight: bold;
+
             margin-bottom: 15px;
         }
 
-        .footer-brand p {
-            color: #bbb;
+
+        .footer-logo span {
+            color: #d2ad6d;
+        }
+
+
+        .footer-column p {
+            color: #c8d0c9;
 
             line-height: 1.7;
+
+            font-size: 14px;
         }
 
-        .footer-column h3 {
-            margin-bottom: 18px;
+
+        .footer-column h4 {
+            margin-bottom: 15px;
         }
+
 
         .footer-column a {
             display: block;
 
-            color: #bbb;
-
             margin-bottom: 10px;
+
+            color: #c8d0c9;
+
+            font-size: 14px;
         }
+
 
         .footer-column a:hover {
             color: white;
         }
 
+
         .footer-bottom {
-            border-top: 1px solid #435047;
+            border-top:
+                1px solid
+                rgba(255,255,255,0.12);
 
-            margin-top: 40px;
-
-            padding-top: 20px;
+            padding: 20px;
 
             text-align: center;
 
-            color: #aaa;
+            color: #b9c2ba;
+
+            font-size: 13px;
         }
 
 
-        /* MOBILE */
+        /* ================= RESPONSIVE ================= */
 
-        @media (max-width: 800px) {
+        @media (max-width: 1000px) {
 
-            .navbar {
-                flex-direction: column;
-                gap: 15px;
+            .wishlist-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
             }
 
-            .nav {
-                flex-wrap: wrap;
+            .footer-container {
+                grid-template-columns:
+                    2fr 1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 760px) {
+
+            .nav-container {
+                flex-direction: column;
+            }
+
+
+            .nav-links {
                 justify-content: center;
             }
 
+
             .wishlist-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
+
+            .footer-container {
+                grid-template-columns:
+                    1fr 1fr;
             }
         }
 
 
-        @media (max-width: 550px) {
+        @media (max-width: 520px) {
 
             .wishlist-grid {
                 grid-template-columns: 1fr;
             }
 
-            .footer-grid {
-                grid-template-columns: 1fr;
+
+            .wishlist-hero h1 {
+                font-size: 34px;
             }
 
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
         }
 
     </style>
@@ -348,427 +499,530 @@
 <body>
 
 
-    <!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 
-    <header class="navbar">
+<nav class="navbar">
 
-        <a href="index.html" class="logo">
-            GlowHerb
+    <div class="nav-container">
+
+        <a href="index.html"
+           class="logo">
+
+            Glow<span>Herb</span>
+
         </a>
 
 
-        <nav>
+        <div class="nav-links">
 
-            <ul class="nav">
+            <a href="index.html">
+                Home
+            </a>
 
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
+            <a href="products.html">
+                Products
+            </a>
 
-                <li>
-                    <a href="products.html">
-                        Products
-                    </a>
-                </li>
+            <a href="about.html">
+                About
+            </a>
 
-                <li>
-                    <a href="about.html">
-                        About
-                    </a>
-                </li>
+            <a href="contact.html">
+                Contact
+            </a>
 
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
+            <a href="wishlist.html">
+                Wishlist
+            </a>
 
-                <li>
-                    <a href="cart.html">
-                        Cart
-                    </a>
-                </li>
+            <a href="account.html">
+                Account
+            </a>
 
-                <li>
-                    <a href="wishlist.html">
-                        Wishlist
-                    </a>
-                </li>
+            <a href="cart.html"
+               class="cart-link">
 
-            </ul>
+                🛒 Cart
 
-        </nav>
+            </a>
 
+        </div>
 
-        <a href="login.html" class="login-btn">
-            Login
-        </a>
+    </div>
 
-    </header>
+</nav>
 
 
 
-    <!-- WISHLIST -->
+<!-- ================= HERO ================= -->
 
-    <main class="wishlist-page">
+<section class="wishlist-hero">
+
+    <small>
+        Your Favorites
+    </small>
 
 
-        <div class="page-heading">
+    <h1>
+        My Wishlist ♥
+    </h1>
 
-            <h1>
-                My Wishlist ❤️
-            </h1>
+
+    <p>
+        Save your favorite GlowHerb products
+        and come back whenever you are ready
+        to add them to your cart.
+    </p>
+
+</section>
+
+
+
+<!-- ================= WISHLIST ================= -->
+
+<section class="wishlist-section">
+
+    <div id="wishlistContainer">
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+
+        <div class="footer-column">
+
+            <div class="footer-logo">
+
+                Glow<span>Herb</span>
+
+            </div>
+
 
             <p>
-                Save your favourite GlowHerb products here.
+
+                Natural beauty essentials
+                inspired by simple herbal
+                care and everyday self-care.
+
             </p>
 
         </div>
 
 
-        <div
-            id="wishlistContainer"
-            class="wishlist-grid"
-        >
+
+        <div class="footer-column">
+
+            <h4>
+                Quick Links
+            </h4>
+
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
         </div>
 
 
-    </main>
+
+        <div class="footer-column">
+
+            <h4>
+                Shop
+            </h4>
+
+
+            <a href="products.html">
+                Face Care
+            </a>
+
+            <a href="products.html">
+                Skin Care
+            </a>
+
+            <a href="products.html">
+                Hair Care
+            </a>
+
+            <a href="products.html">
+                Body Care
+            </a>
+
+        </div>
 
 
 
-    <!-- FOOTER -->
+        <div class="footer-column">
 
-    <footer class="footer">
+            <h4>
+                Customer
+            </h4>
 
-        <div class="footer-grid">
+
+            <a href="cart.html">
+                My Cart
+            </a>
+
+            <a href="wishlist.html">
+                Wishlist
+            </a>
+
+            <a href="account.html">
+                My Account
+            </a>
+
+            <a href="orders.html">
+                My Orders
+            </a>
+
+        </div>
+
+    </div>
 
 
-            <div class="footer-brand">
+
+    <div class="footer-bottom">
+
+        © 2026 GlowHerb.
+        All rights reserved.
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+
+/* ==========================================
+   LOAD WISHLIST
+   ========================================== */
+
+function loadWishlist() {
+
+
+    let wishlist =
+        JSON.parse(
+            localStorage.getItem("wishlist")
+        ) || [];
+
+
+    /*
+       IMPORTANT:
+
+       Some old wishlist entries may be
+       empty, null, or in the old format.
+
+       We remove those invalid entries.
+    */
+
+    wishlist = wishlist.filter(function(product) {
+
+        return (
+            product &&
+            typeof product === "object" &&
+            product.name &&
+            product.name.trim() !== ""
+        );
+
+    });
+
+
+    /*
+       Save cleaned wishlist
+       back to localStorage.
+    */
+
+    localStorage.setItem(
+        "wishlist",
+        JSON.stringify(wishlist)
+    );
+
+
+    const container =
+        document.getElementById(
+            "wishlistContainer"
+        );
+
+
+    /* ================= EMPTY ================= */
+
+    if (wishlist.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-wishlist">
+
+                <div class="empty-icon">
+                    ♡
+                </div>
 
                 <h2>
-                    GlowHerb
+                    Your wishlist is empty
                 </h2>
 
                 <p>
-                    Natural beauty inspired by simple
-                    herbal rituals and everyday self-care.
+                    You haven't saved any products yet.
                 </p>
 
+                <a
+                    href="products.html"
+                    class="shop-btn"
+                >
+                    Explore Products
+                </a>
+
             </div>
 
+        `;
 
-            <div class="footer-column">
+        return;
+    }
+
+
+    /* ================= PRODUCTS ================= */
+
+    let html = `
+
+        <div class="wishlist-grid">
+
+    `;
+
+
+    wishlist.forEach(function(product, index) {
+
+
+        html += `
+
+            <div class="wishlist-card">
+
+                <div class="wishlist-icon">
+                    🌿
+                </div>
+
 
                 <h3>
-                    Quick Links
+                    ${product.name}
                 </h3>
 
-                <a href="index.html">
-                    Home
-                </a>
 
-                <a href="products.html">
-                    Products
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-            </div>
+                <div class="wishlist-price">
+                    ₹${product.price}
+                </div>
 
 
-            <div class="footer-column">
-
-                <h3>
-                    Account
-                </h3>
-
-                <a href="login.html">
-                    Login
-                </a>
-
-                <a href="register.html">
-                    Register
-                </a>
-
-                <a href="cart.html">
-                    Cart
-                </a>
-
-                <a href="wishlist.html">
-                    Wishlist
-                </a>
-
-            </div>
+                <div class="wishlist-actions">
 
 
-            <div class="footer-column">
-
-                <h3>
-                    Help
-                </h3>
-
-                <a href="contact.html">
-                    Contact Us
-                </a>
-
-                <a href="#">
-                    Privacy Policy
-                </a>
-
-                <a href="#">
-                    Terms
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            <p>
-                © 2026 GlowHerb. All Rights Reserved.
-            </p>
-
-        </div>
-
-    </footer>
-
-
-
-    <script>
-
-        function loadWishlist() {
-
-            let wishlist =
-                JSON.parse(
-                    localStorage.getItem("wishlist")
-                ) || [];
-
-
-            const container =
-                document.getElementById(
-                    "wishlistContainer"
-                );
-
-
-            container.innerHTML = "";
-
-
-            if (wishlist.length === 0) {
-
-                container.innerHTML = `
-
-                    <div
-                        class="empty-wishlist"
-                        style="grid-column: 1 / -1;"
+                    <button
+                        class="move-cart-btn"
+                        onclick="moveToCart(${index})"
                     >
+                        Add to Cart
+                    </button>
 
-                        <div class="empty-icon">
-                            ❤️
-                        </div>
 
-                        <h2>
-                            Your wishlist is empty
-                        </h2>
+                    <button
+                        class="remove-btn"
+                        onclick="removeFromWishlist(${index})"
+                    >
+                        Remove
+                    </button>
 
-                        <p>
-                            Save products you love
-                            and find them here later.
-                        </p>
 
-                        <a
-                            href="products.html"
-                            class="shop-btn"
-                        >
-                            Explore Products
-                        </a>
+                </div>
 
-                    </div>
+            </div>
 
-                `;
+        `;
 
-                return;
-            }
+    });
 
 
-            wishlist.forEach(function(productName) {
+    html += `
 
-                let price = 299;
+        </div>
 
+    `;
 
-                if (productName === "Rose Herbal Cream") {
-                    price = 349;
-                }
 
-                else if (productName === "Herbal Hair Oil") {
-                    price = 399;
-                }
+    container.innerHTML = html;
 
-                else if (productName === "Neem Body Scrub") {
-                    price = 279;
-                }
+}
 
-                else if (productName === "Aloe Face Gel") {
-                    price = 329;
-                }
 
-                else if (productName === "Turmeric Glow Mask") {
-                    price = 379;
-                }
 
-                else if (productName === "Amla Hair Serum") {
-                    price = 449;
-                }
+/* ==========================================
+   MOVE WISHLIST PRODUCT TO CART
+   ========================================== */
 
-                else if (productName === "Sandalwood Body Lotion") {
-                    price = 429;
-                }
+function moveToCart(index) {
 
 
-                const card =
-                    document.createElement("div");
+    let wishlist =
+        JSON.parse(
+            localStorage.getItem("wishlist")
+        ) || [];
 
 
-                card.className =
-                    "wishlist-card";
+    let product =
+        wishlist[index];
 
 
-                card.innerHTML = `
+    if (
+        !product ||
+        !product.name
+    ) {
 
-                    <div class="product-image">
-                        🌿
-                    </div>
+        return;
 
-                    <div class="product-info">
+    }
 
-                        <h3>
-                            ${productName}
-                        </h3>
 
-                        <div class="product-price">
-                            ₹${price}
-                        </div>
+    let cart =
+        JSON.parse(
+            localStorage.getItem("cart")
+        ) || [];
 
 
-                        <div class="card-buttons">
+    let existingProduct =
+        cart.find(function(item) {
 
-                            <button
-                                class="cart-btn"
-                                onclick="moveToCart('${productName}', ${price})"
-                            >
-                                🛒 Add to Cart
-                            </button>
+            return item.name === product.name;
 
-                            <button
-                                class="remove-btn"
-                                onclick="removeFromWishlist('${productName}')"
-                            >
-                                Remove
-                            </button>
+        });
 
-                        </div>
 
-                    </div>
+    if (existingProduct) {
 
-                `;
+        existingProduct.quantity++;
 
+    }
 
-                container.appendChild(card);
+    else {
 
-            });
+        cart.push({
 
-        }
+            name: product.name,
 
+            price: product.price,
 
+            quantity: 1
 
-        function moveToCart(name, price) {
+        });
 
-            let cart =
-                JSON.parse(
-                    localStorage.getItem("cart")
-                ) || [];
+    }
 
 
-            let existing =
-                cart.find(
-                    product =>
-                    product.name === name
-                );
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
 
 
-            if (existing) {
+    /*
+       Remove product from wishlist
+       after adding to cart.
+    */
 
-                existing.quantity++;
+    wishlist.splice(index, 1);
 
-            }
 
-            else {
+    localStorage.setItem(
+        "wishlist",
+        JSON.stringify(wishlist)
+    );
 
-                cart.push({
 
-                    name: name,
+    alert(
+        product.name +
+        " added to cart!"
+    );
 
-                    price: price,
 
-                    quantity: 1
+    window.location.href =
+        "cart.html";
 
-                });
+}
 
-            }
 
 
-            localStorage.setItem(
-                "cart",
-                JSON.stringify(cart)
-            );
+/* ==========================================
+   REMOVE FROM WISHLIST
+   ========================================== */
 
+function removeFromWishlist(index) {
 
-            alert(
-                name + " added to cart!"
-            );
 
-        }
+    let wishlist =
+        JSON.parse(
+            localStorage.getItem("wishlist")
+        ) || [];
 
 
+    if (
+        !wishlist[index]
+    ) {
 
-        function removeFromWishlist(name) {
+        return;
 
-            let wishlist =
-                JSON.parse(
-                    localStorage.getItem("wishlist")
-                ) || [];
+    }
 
 
-            wishlist =
-                wishlist.filter(
-                    product => product !== name
-                );
+    let productName =
+        wishlist[index].name;
 
 
-            localStorage.setItem(
-                "wishlist",
-                JSON.stringify(wishlist)
-            );
+    wishlist.splice(index, 1);
 
 
-            loadWishlist();
+    localStorage.setItem(
+        "wishlist",
+        JSON.stringify(wishlist)
+    );
 
-        }
 
+    alert(
+        productName +
+        " removed from wishlist!"
+    );
 
-        loadWishlist();
 
-    </script>
+    loadWishlist();
+
+}
+
+
+
+/* ==========================================
+   LOAD WHEN PAGE OPENS
+   ========================================== */
+
+loadWishlist();
+
+
+</script>
 
 
 </body>
