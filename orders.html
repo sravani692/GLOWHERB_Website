@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Orders | GlowHerb</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f5ee;
+            color: #2f3e32;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: white;
+            padding: 18px 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #356859;
+        }
+
+        .nav {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: #356859;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .orders-container {
+            width: 90%;
+            max-width: 1050px;
+            margin: 50px auto;
+        }
+
+        .page-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-heading h1 {
+            font-size: 36px;
+            color: #356859;
+            margin-bottom: 10px;
+        }
+
+        .page-heading p {
+            color: #777;
+        }
+
+        /* =========================
+           EMPTY ORDERS
+        ========================= */
+
+        .empty-orders {
+            background: white;
+            text-align: center;
+            padding: 70px 20px;
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .empty-orders h2 {
+            color: #356859;
+            margin-bottom: 12px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 13px 25px;
+
+            background: #356859;
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+        }
+
+        .shop-btn:hover {
+            background: #284f42;
+        }
+
+        /* =========================
+           ORDER CARD
+        ========================= */
+
+        .order-card {
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        /* ORDER HEADER */
+
+        .order-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            border-bottom: 1px solid #eee;
+
+            padding-bottom: 18px;
+
+            margin-bottom: 20px;
+        }
+
+        .order-id {
+            font-weight: bold;
+            color: #356859;
+            margin-bottom: 7px;
+        }
+
+        .order-date {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .status {
+            background: #e7f3e5;
+
+            color: #356859;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .order-product {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 14px 0;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-info h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .product-info p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #356859;
+        }
+
+        /* =========================
+           ORDER FOOTER
+        ========================= */
+
+        .order-footer {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 20px;
+        }
+
+        .total-label {
+            color: #555;
+            margin-right: 8px;
+        }
+
+        .total-price {
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #356859;
+        }
+
+        /* VIEW DETAILS */
+
+        .view-btn {
+            background: white;
+
+            color: #356859;
+
+            border: 1px solid #356859;
+
+            padding: 10px 18px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .view-btn:hover {
+            background: #356859;
+            color: white;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: #2f3e32;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 40px 7%;
+
+            margin-top: 60px;
+        }
+
+        .footer h2 {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            color: #ddd;
+            margin: 8px 0;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .order-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .order-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        GlowHerb
+    </div>
+
+
+    <ul class="nav">
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="products.html">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="about.html">
+                About
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html">
+                Contact
+            </a>
+        </li>
+
+        <li>
+            <a href="cart.html">
+                Cart
+            </a>
+        </li>
+
+        <li>
+            <a href="wishlist.html">
+                Wishlist
+            </a>
+        </li>
+
+        <li>
+            <a href="account.html">
+                My Account
+            </a>
+        </li>
+
+    </ul>
+
+</header>
+
+
+
+<!-- =========================
+     ORDERS
+========================= -->
+
+<main class="orders-container">
+
+
+    <div class="page-heading">
+
+        <h1>
+            My Orders
+        </h1>
+
+        <p>
+            View your GlowHerb order history.
+        </p>
+
+    </div>
+
+
+    <!-- EMPTY ORDERS -->
+
+    <div
+        id="emptyOrders"
+        class="empty-orders"
+        style="display:none;"
+    >
+
+        <h2>
+            No Orders Yet
+        </h2>
+
+        <p>
+            You haven't placed any orders yet.
+        </p>
+
+        <a
+            href="products.html"
+            class="shop-btn"
+        >
+            Start Shopping
+        </a>
+
+    </div>
+
+
+    <!-- ORDERS WILL BE DISPLAYED HERE -->
+
+    <div id="ordersList"></div>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <h2>
+        GlowHerb
+    </h2>
+
+    <p>
+        Natural beauty inspired by nature.
+    </p>
+
+    <p>
+        © 2026 GlowHerb. All rights reserved.
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================
+   GET ORDERS FROM LOCAL STORAGE
+===================================== */
+
+const orders =
+    JSON.parse(
+        localStorage.getItem(
+            "glowherbOrders"
+        )
+    ) || [];
+
+
+
+/* =====================================
+   CHECK IF ORDERS EXIST
+===================================== */
+
+if (orders.length === 0) {
+
+    document.getElementById(
+        "emptyOrders"
+    ).style.display = "block";
+
+}
+
+
+
+/* =====================================
+   DISPLAY ORDERS
+===================================== */
+
+function displayOrders() {
+
+    const ordersList =
+        document.getElementById(
+            "ordersList"
+        );
+
+
+    ordersList.innerHTML = "";
+
+
+    /*
+       Reverse the array so the
+       newest order appears first.
+    */
+
+    orders
+        .slice()
+        .reverse()
+        .forEach(function(order) {
+
+
+            let productsHTML = "";
+
+
+            /* =========================
+               PRODUCTS INSIDE ORDER
+            ========================= */
+
+            order.items.forEach(function(item) {
+
+                const itemTotal =
+                    item.price *
+                    item.quantity;
+
+
+                productsHTML += `
+
+                    <div class="order-product">
+
+                        <div class="product-info">
+
+                            <h3>
+                                ${item.name}
+                            </h3>
+
+                            <p>
+                                Quantity:
+                                ${item.quantity}
+                            </p>
+
+                        </div>
+
+
+                        <div class="product-price">
+
+                            ₹${itemTotal}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+
+
+            /* =========================
+               ORDER CARD
+            ========================= */
+
+            ordersList.innerHTML += `
+
+                <div class="order-card">
+
+
+                    <div class="order-header">
+
+
+                        <div>
+
+                            <div class="order-id">
+
+                                Order ID:
+                                ${order.id}
+
+                            </div>
+
+
+                            <div class="order-date">
+
+                                Ordered on:
+                                ${order.date}
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="status">
+
+                            ${order.status}
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div>
+
+                        ${productsHTML}
+
+                    </div>
+
+
+
+                    <div class="order-footer">
+
+
+                        <div>
+
+                            <span class="total-label">
+
+                                Order Total:
+
+                            </span>
+
+
+                            <span class="total-price">
+
+                                ₹${order.total}
+
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="view-btn"
+                            onclick="viewOrder('${order.id}')"
+                        >
+
+                            View Details
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+            `;
+
+        });
+
+}
+
+
+
+displayOrders();
+
+
+
+/* =====================================
+   VIEW ORDER DETAILS
+===================================== */
+
+function viewOrder(orderId) {
+
+
+    const order =
+        orders.find(
+            function(item) {
+
+                return item.id === orderId;
+
+            }
+        );
+
+
+    if (!order) {
+
+        alert(
+            "Order details not found."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+
+        "ORDER DETAILS\n\n" +
+
+        "Order ID: " +
+        order.id +
+
+        "\nDate: " +
+        order.date +
+
+        "\nStatus: " +
+        order.status +
+
+        "\nPayment: " +
+        order.paymentMethod +
+
+        "\n\nCUSTOMER DETAILS" +
+
+        "\nName: " +
+        order.customer.name +
+
+        "\nEmail: " +
+        order.customer.email +
+
+        "\nPhone: " +
+        order.customer.phone +
+
+        "\nAddress: " +
+        order.customer.address +
+
+        ", " +
+        order.customer.city +
+
+        ", " +
+        order.customer.state +
+
+        " - " +
+        order.customer.pincode +
+
+        "\n\nOrder Total: ₹" +
+        order.total
+
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

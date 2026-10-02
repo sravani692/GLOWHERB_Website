@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GlowHerb | Natural Beauty & Herbal Care</title>
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #faf8f2;
+            color: #263b2b;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            width: 100%;
+            background: #fffdf8;
+            border-bottom: 1px solid #e8e2d5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #315c3b;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #b48a4b;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            font-size: 15px;
+            color: #405344;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            color: #477b51;
+        }
+
+        .nav .login-btn {
+            background: #315c3b;
+            color: white;
+            padding: 10px 19px;
+            border-radius: 25px;
+        }
+
+        .nav .login-btn:hover {
+            background: #24472d;
+            color: white;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 650px;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(250, 248, 242, 0.98) 0%,
+                    rgba(250, 248, 242, 0.93) 38%,
+                    rgba(250, 248, 242, 0.55) 62%,
+                    rgba(250, 248, 242, 0.08) 100%
+                ),
+                url("https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=1600&q=85");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+            min-height: 650px;
+            margin: auto;
+            padding: 70px 25px;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero-small-text {
+            display: inline-block;
+            background: #e9f0e5;
+            color: #55745b;
+            padding: 9px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            line-height: 1.05;
+            color: #294b32;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 span {
+            color: #b48a4b;
+        }
+
+        .hero p {
+            max-width: 560px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #5f695f;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            min-width: 155px;
+            text-align: center;
+            padding: 14px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #315c3b;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #24472d;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #315c3b;
+            border: 1px solid #315c3b;
+        }
+
+        .btn-secondary:hover {
+            background: #315c3b;
+            color: white;
+        }
+
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            margin-top: 42px;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .trust-item strong {
+            color: #315c3b;
+            font-size: 19px;
+        }
+
+        .trust-item span {
+            color: #777;
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+        .trust-line {
+            width: 1px;
+            height: 35px;
+            background: #d6d2c8;
+        }
+
+
+        /* =========================
+           BENEFITS
+        ========================= */
+
+        .benefits {
+            max-width: 1200px;
+            margin: -35px auto 0;
+            padding: 0 25px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .benefits-box {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(39, 60, 43, 0.10);
+            padding: 28px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px;
+        }
+
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #edf3e9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .benefit h4 {
+            font-size: 15px;
+            color: #315c3b;
+            margin-bottom: 2px;
+        }
+
+        .benefit p {
+            font-size: 12px;
+            color: #777;
+        }
+
+
+        /* =========================
+           COMMON SECTION
+        ========================= */
+
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 85px 25px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading span {
+            color: #b48a4b;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .section-heading h2 {
+            color: #294b32;
+            font-size: 38px;
+            margin: 8px 0 10px;
+        }
+
+        .section-heading p {
+            color: #687269;
+            max-width: 650px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           FEATURED PRODUCTS
+        ========================= */
+
+        .featured-products {
+            background: #faf8f2;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 18px;
+            padding: 14px;
+            box-shadow: 0 8px 25px rgba(40, 55, 43, 0.08);
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(40, 55, 43, 0.13);
+        }
+
+        .product-card-image {
+            width: 100%;
+            height: 245px;
+            overflow: hidden;
+            border-radius: 14px;
+            background: #f1eee5;
+        }
+
+        .product-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: 0.4s;
+        }
+
+        .product-card:hover .product-card-image img {
+            transform: scale(1.05);
+        }
+
+        .product-card-content {
+            padding: 18px 6px 8px;
+        }
+
+        .product-rating {
+            color: #c59545;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .product-card h3 {
+            font-size: 18px;
+            color: #294b32;
+            margin-bottom: 7px;
+        }
+
+        .product-card p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: #315c3b;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .home-product-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .cart-btn {
+            flex: 1;
+            border: none;
+            background: #315c3b;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 22px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: #24472d;
+        }
+
+        .details-btn {
+            flex: 1;
+            text-align: center;
+            border: 1px solid #315c3b;
+            color: #315c3b;
+            padding: 9px 12px;
+            border-radius: 22px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .details-btn:hover {
+            background: #315c3b;
+            color: white;
+        }
+
+        .view-all-box {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .view-all-products {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: 30px;
+            border: 1px solid #315c3b;
+            color: #315c3b;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .view-all-products:hover {
+            background: #315c3b;
+            color: white;
+        }
+
+
+        /* =========================
+           WHY GLOWHERB
+        ========================= */
+
+        .why-section {
+            background: #f0f3eb;
+        }
+
+        .why-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 85px 25px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .why-image {
+            height: 480px;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .why-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .why-text span {
+            color: #b48a4b;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .why-text h2 {
+            color: #294b32;
+            font-size: 40px;
+            line-height: 1.2;
+            margin: 10px 0 20px;
+        }
+
+        .why-text > p {
+            color: #687269;
+            margin-bottom: 28px;
+        }
+
+        .why-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .why-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+        .why-item h4 {
+            color: #315c3b;
+            margin-bottom: 2px;
+        }
+
+        .why-item p {
+            font-size: 14px;
+            color: #737b74;
+        }
+
+
+        /* =========================
+           REVIEWS
+        ========================= */
+
+        .reviews {
+            background: #fffdf8;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .review-card {
+            background: #faf8f2;
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid #ece7dc;
+        }
+
+        .review-stars {
+            color: #c59545;
+            margin-bottom: 14px;
+        }
+
+        .review-card p {
+            color: #5f685f;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .review-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #315c3b;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .review-user h4 {
+            color: #294b32;
+            font-size: 15px;
+        }
+
+        .review-user span {
+            color: #888;
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           NEWSLETTER
+        ========================= */
+
+        .newsletter-section {
+            padding: 70px 25px;
+            background: #315c3b;
+        }
+
+        .newsletter {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            color: white;
+        }
+
+        .newsletter h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter p {
+            color: #dbe5dc;
+            margin-bottom: 25px;
+        }
+
+        .newsletter-form {
+            max-width: 580px;
+            margin: auto;
+            display: flex;
+            background: white;
+            padding: 6px;
+            border-radius: 40px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 14px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+
+        .newsletter-form button {
+            border: none;
+            background: #b48a4b;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .newsletter-form button:hover {
+            background: #9d773f;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: #203428;
+            color: #dce4dd;
+            padding: 60px 25px 25px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 45px;
+        }
+
+        .footer-brand h2 {
+            color: white;
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand h2 span {
+            color: #c9a467;
+        }
+
+        .footer-brand p {
+            color: #b7c2b9;
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        .footer-column h4 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #b7c2b9;
+            font-size: 14px;
+            margin-bottom: 9px;
+            transition: 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 45px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #405246;
+            text-align: center;
+            color: #aab5ad;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits-box {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-content {
+                grid-template-columns: 1fr;
+            }
+
+            .why-image {
+                height: 400px;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 768px) {
+
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav {
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .hero {
+                min-height: 600px;
+
+                background:
+                    linear-gradient(
+                        rgba(250, 248, 242, 0.88),
+                        rgba(250, 248, 242, 0.94)
+                    ),
+                    url("https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=1000&q=85");
+
+                background-position: center;
+            }
+
+            .hero-container {
+                min-height: 600px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .benefits {
+                margin-top: -20px;
+            }
+
+            .section {
+                padding: 65px 20px;
+            }
+
+            .section-heading h2 {
+                font-size: 31px;
+            }
+
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-text h2 {
+                font-size: 32px;
+            }
+
+            .newsletter h2 {
+                font-size: 30px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                background: transparent;
+                gap: 10px;
+            }
+
+            .newsletter-form input {
+                width: 100%;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+
+
+        @media (max-width: 520px) {
+
+            .logo {
+                font-size: 25px;
+            }
+
+            .nav {
+                gap: 10px;
+            }
+
+            .nav a {
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 580px;
+            }
+
+            .hero-container {
+                min-height: 580px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-small-text {
+                font-size: 10px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .hero-trust {
+                gap: 10px;
+                margin-top: 30px;
+            }
+
+            .trust-item strong {
+                font-size: 16px;
+            }
+
+            .trust-item span {
+                font-size: 9px;
+            }
+
+            .trust-line {
+                height: 30px;
+            }
+
+            .benefits-box {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card-image {
+                height: 280px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Glow<span>Herb</span>
+            </a>
+
+            <nav class="nav">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="products.html">
+                    Products
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+                <a href="wishlist.html">
+                    Wishlist
+                </a>
+
+                <a href="account.html" class="login-btn">
+                    My Account
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-container">
+
+            <div class="hero-content">
+
+                <span class="hero-small-text">
+                    🌿 PURE • NATURAL • GLOWING
+                </span>
+
+                <h1>
+
+                    Your Natural
+                    <br>
+
+                    Beauty
+                    <span>Ritual.</span>
+
+                </h1>
+
+                <p>
+
+                    Discover beautiful herbal-inspired skincare,
+                    haircare and body care products made for
+                    your everyday self-care routine.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="products.html"
+                        class="btn-primary"
+                    >
+                        Shop Now →
+                    </a>
+
+                    <a
+                        href="about.html"
+                        class="btn-secondary"
+                    >
+                        Our Story
+                    </a>
+
+                </div>
+
+
+                <div class="hero-trust">
+
+                    <div class="trust-item">
+
+                        <strong>
+                            8+
+                        </strong>
+
+                        <span>
+                            Beauty Products
+                        </span>
+
+                    </div>
+
+
+                    <div class="trust-line"></div>
+
+
+                    <div class="trust-item">
+
+                        <strong>
+                            100%
+                        </strong>
+
+                        <span>
+                            Nature Inspired
+                        </span>
+
+                    </div>
+
+
+                    <div class="trust-line"></div>
+
+
+                    <div class="trust-item">
+
+                        <strong>
+                            4.8★
+                        </strong>
+
+                        <span>
+                            Customer Rating
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         BENEFITS
+    ========================= -->
+
+    <section class="benefits">
+
+        <div class="benefits-box">
+
+
+            <div class="benefit">
+
+                <div class="benefit-icon">
+                    🌿
+                </div>
+
+                <div>
+
+                    <h4>
+                        Herbal Inspired
+                    </h4>
+
+                    <p>
+                        Nature-inspired beauty
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <div class="benefit-icon">
+                    💚
+                </div>
+
+                <div>
+
+                    <h4>
+                        Gentle Care
+                    </h4>
+
+                    <p>
+                        Simple everyday routines
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <div class="benefit-icon">
+                    ✨
+                </div>
+
+                <div>
+
+                    <h4>
+                        Everyday Glow
+                    </h4>
+
+                    <p>
+                        Beauty made simple
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <div class="benefit-icon">
+                    🚚
+                </div>
+
+                <div>
+
+                    <h4>
+                        Easy Shopping
+                    </h4>
+
+                    <p>
+                        Simple online experience
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FEATURED PRODUCTS
+    ========================= -->
+<section class="section featured-products">
+
+    <div class="section-heading">
+
+        <span>GlowHerb Collection</span>
+
+        <h2>Our Bestselling Beauty Essentials</h2>
+
+        <p>
+            Discover our carefully selected herbal-inspired
+            products for your skincare, haircare and body care routine.
+        </p>
+
+    </div>
+
+
+    <div class="product-grid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="product-card">
+
+            <div class="product-card-image">
+
+                <span class="product-badge">
+                    Popular
+                </span>
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlNPXxjbjPH6I9CzUcikBup8rhagsNRQUL-su1qIXGRQ&s=10"
+                    alt="Herbal Face Powder"
+                >
+
+                <button
+                    class="home-wishlist"
+                    onclick="addToWishlist('Herbal Face Powder', this)"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="product-card-content">
+
+                <div class="product-category">
+                    FACE CARE
+                </div>
+
+                <h3>
+                    Herbal Face Powder
+                </h3>
+
+                <div class="product-rating">
+                    ★★★★★
+                    <span>(24)</span>
+                </div>
+
+                <p>
+                    Gentle herbal-inspired face powder for
+                    a fresh everyday look.
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        ₹299
+                    </div>
+
+                    <button
+                        class="cart-btn"
+                        onclick="addToCart('Herbal Face Powder', 299)"
+                    >
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product-card">
+
+            <div class="product-card-image">
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlZIPCEudwaJ6YuY3DIQvdjZsKfqi0HrUOlmPJVa4z7g&s"
+                    alt="Rose Herbal Cream"
+                >
+
+                <button
+                    class="home-wishlist"
+                    onclick="addToWishlist('Rose Herbal Cream', this)"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="product-card-content">
+
+                <div class="product-category">
+                    SKIN CARE
+                </div>
+
+                <h3>
+                    Rose Herbal Cream
+                </h3>
+
+                <div class="product-rating">
+                    ★★★★★
+                    <span>(18)</span>
+                </div>
+
+                <p>
+                    A soft and refreshing cream for
+                    your daily skincare routine.
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        ₹349
+                    </div>
+
+                    <button
+                        class="cart-btn"
+                        onclick="addToCart('Rose Herbal Cream', 349)"
+                    >
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 3 -->
+
+        <div class="product-card">
+
+            <div class="product-card-image">
+
+                <span class="product-badge">
+                    Bestseller
+                </span>
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTChn31-YsgSyecou66Lh6prMOEFir3QmkPQ3OW1TYmJA&s"
+                    alt="Herbal Hair Oil"
+                >
+
+                <button
+                    class="home-wishlist"
+                    onclick="addToWishlist('Herbal Hair Oil', this)"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="product-card-content">
+
+                <div class="product-category">
+                    HAIR CARE
+                </div>
+
+                <h3>
+                    Herbal Hair Oil
+                </h3>
+
+                <div class="product-rating">
+                    ★★★★★
+                    <span>(32)</span>
+                </div>
+
+                <p>
+                    Traditional herbal-inspired hair care
+                    for your regular hair routine.
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        ₹399
+                    </div>
+
+                    <button
+                        class="cart-btn"
+                        onclick="addToCart('Herbal Hair Oil', 399)"
+                    >
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 4 -->
+
+        <div class="product-card">
+
+            <div class="product-card-image">
+
+                <span class="product-badge new">
+                    New
+                </span>
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG_GAJhB9DFfA7eRcF2cw6TBQVV1kiGZ0d4QGWmfQpyQ&s"
+                    alt="Aloe Face Gel"
+                >
+
+                <button
+                    class="home-wishlist"
+                    onclick="addToWishlist('Aloe Face Gel', this)"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="product-card-content">
+
+                <div class="product-category">
+                    FACE CARE
+                </div>
+
+                <h3>
+                    Aloe Face Gel
+                </h3>
+
+                <div class="product-rating">
+                    ★★★★★
+                    <span>(27)</span>
+                </div>
+
+                <p>
+                    Lightweight aloe-inspired gel for
+                    everyday skin care.
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        ₹329
+                    </div>
+
+                    <button
+                        class="cart-btn"
+                        onclick="addToCart('Aloe Face Gel', 329)"
+                    >
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="view-all-box">
+
+        <a
+            href="products.html"
+            class="view-all-products"
+        >
+            Explore All Products →
+        </a>
+
+    </div>
+
+</section>
+
+
+
+    <!-- =========================
+         WHY GLOWHERB
+    ========================= -->
+
+    <section class="why-section">
+
+        <div class="why-content">
+
+
+            <div class="why-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=1000&q=80"
+                    alt="Natural beauty products"
+                >
+
+            </div>
+
+
+            <div class="why-text">
+
+                <span>
+                    Why GlowHerb
+                </span>
+
+                <h2>
+                    Simple Beauty,
+                    Inspired by Nature.
+                </h2>
+
+                <p>
+                    GlowHerb brings together simple beauty products
+                    inspired by natural ingredients and everyday
+                    self-care rituals.
+                </p>
+
+
+                <div class="why-list">
+
+
+                    <div class="why-item">
+
+                        <div class="why-icon">
+                            🌿
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Herbal Inspired
+                            </h4>
+
+                            <p>
+                                Products inspired by traditional
+                                beauty ingredients.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="why-item">
+
+                        <div class="why-icon">
+                            💧
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Simple Routine
+                            </h4>
+
+                            <p>
+                                Easy products that fit into your
+                                everyday beauty routine.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="why-item">
+
+                        <div class="why-icon">
+                            ✨
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Everyday Glow
+                            </h4>
+
+                            <p>
+                                Beauty care designed to feel simple
+                                and enjoyable.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="why-item">
+
+                        <div class="why-icon">
+                            🛍️
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Easy Shopping
+                            </h4>
+
+                            <p>
+                                Browse products, add to cart and
+                                manage your orders easily.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         REVIEWS
+    ========================= -->
+
+    <section class="section reviews">
+
+        <div class="section-heading">
+
+            <span>
+                Customer Love
+            </span>
+
+            <h2>
+                What Our Customers Say
+            </h2>
+
+            <p>
+                Simple beauty routines made better with GlowHerb.
+            </p>
+
+        </div>
+
+
+        <div class="review-grid">
+
+
+            <div class="review-card">
+
+                <div class="review-stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "I really liked the simple shopping experience.
+                    The Herbal Face Powder is now part of my daily
+                    routine."
+                </p>
+
+                <div class="review-user">
+
+                    <div class="review-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Ananya
+                        </h4>
+
+                        <span>
+                            Verified Customer
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="review-card">
+
+                <div class="review-stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "GlowHerb has a beautiful collection of
+                    herbal-inspired products. The website is also
+                    very easy to use."
+                </p>
+
+                <div class="review-user">
+
+                    <div class="review-avatar">
+                        P
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Priya
+                        </h4>
+
+                        <span>
+                            Verified Customer
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="review-card">
+
+                <div class="review-stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "I loved the clean design and the product
+                    collection. It feels simple and natural."
+                </p>
+
+                <div class="review-user">
+
+                    <div class="review-avatar">
+                        S
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Sneha
+                        </h4>
+
+                        <span>
+                            Verified Customer
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         NEWSLETTER
+    ========================= -->
+
+    <section class="newsletter-section">
+
+        <div class="newsletter">
+
+            <h2>
+                Stay Connected With GlowHerb
+            </h2>
+
+            <p>
+                Subscribe for beauty tips, new products and
+                special updates.
+            </p>
+
+
+            <form
+                class="newsletter-form"
+                onsubmit="subscribeUser(event)"
+            >
+
+                <input
+                    type="email"
+                    id="newsletterEmail"
+                    placeholder="Enter your email address"
+                    required
+                >
+
+                <button type="submit">
+                    Subscribe
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <div class="footer-brand">
+
+                <h2>
+                    Glow<span>Herb</span>
+                </h2>
+
+                <p>
+                    Natural beauty inspired by nature.
+                    Discover simple skincare, haircare and
+                    body care for your everyday routine.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Quick Links
+                </h4>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="products.html">
+                    Products
+                </a>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Customer
+                </h4>
+
+                <a href="cart.html">
+                    My Cart
+                </a>
+
+                <a href="wishlist.html">
+                    Wishlist
+                </a>
+
+                <a href="account.html">
+                    My Account
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Contact
+                </h4>
+
+                <a href="mailto:support@glowherb.com">
+                    support@glowherb.com
+                </a>
+
+                <a href="tel:+919876543210">
+                    +91 98765 43210
+                </a>
+
+                <a href="contact.html">
+                    Guntur, Andhra Pradesh
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 GlowHerb. All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

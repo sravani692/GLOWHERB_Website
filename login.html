@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | GlowHerb</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f5ee;
+            color: #2f3e32;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: white;
+
+            padding: 18px 7%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            box-shadow:
+                0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            font-size: 27px;
+
+            font-weight: bold;
+
+            color: #356859;
+        }
+
+        .nav {
+            list-style: none;
+
+            display: flex;
+
+            gap: 24px;
+        }
+
+        .nav a {
+            text-decoration: none;
+
+            color: #333;
+
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: #356859;
+        }
+
+        /* =========================
+           LOGIN SECTION
+        ========================= */
+
+        .login-container {
+            min-height: 75vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 50px 20px;
+        }
+
+        .login-card {
+            background: white;
+
+            width: 100%;
+
+            max-width: 450px;
+
+            padding: 40px;
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .login-heading {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .login-icon {
+            width: 65px;
+
+            height: 65px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #e7f3e5;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 30px;
+        }
+
+        .login-heading h1 {
+            color: #356859;
+
+            margin-bottom: 8px;
+        }
+
+        .login-heading p {
+            color: #777;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #356859;
+
+            box-shadow:
+                0 0 0 3px rgba(53,104,89,0.08);
+        }
+
+        /* =========================
+           LOGIN BUTTON
+        ========================= */
+
+        .login-btn {
+            width: 100%;
+
+            border: none;
+
+            background: #356859;
+
+            color: white;
+
+            padding: 14px;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #284f42;
+        }
+
+        /* =========================
+           LINKS
+        ========================= */
+
+        .forgot {
+            display: block;
+
+            text-align: right;
+
+            margin-top: -10px;
+
+            margin-bottom: 20px;
+
+            color: #356859;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+        .register-text {
+            text-align: center;
+
+            margin-top: 25px;
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+        .register-text a {
+            color: #356859;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: #2f3e32;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 35px 7%;
+        }
+
+        .footer h2 {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            color: #ddd;
+
+            margin: 7px 0;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 12px;
+            }
+
+            .login-card {
+                padding: 30px 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        GlowHerb
+    </div>
+
+
+    <ul class="nav">
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="products.html">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="about.html">
+                About
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html">
+                Contact
+            </a>
+        </li>
+
+        <li>
+            <a href="cart.html">
+                Cart
+            </a>
+        </li>
+
+        <li>
+            <a href="wishlist.html">
+                Wishlist
+            </a>
+        </li>
+
+        <li>
+            <a href="account.html">
+                My Account
+            </a>
+        </li>
+
+    </ul>
+
+</header>
+
+
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<main class="login-container">
+
+
+    <div class="login-card">
+
+
+        <div class="login-heading">
+
+            <div class="login-icon">
+                🌿
+            </div>
+
+            <h1>
+                Welcome Back
+            </h1>
+
+            <p>
+                Login to your GlowHerb account
+            </p>
+
+        </div>
+
+
+
+        <form
+            onsubmit="loginUser(event)"
+        >
+
+
+            <div class="form-group">
+
+                <label>
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+
+            <span
+                class="forgot"
+                onclick="forgotPassword()"
+            >
+                Forgot Password?
+            </span>
+
+
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                Login
+            </button>
+
+
+        </form>
+
+
+
+        <div class="register-text">
+
+            Don't have an account?
+
+            <a href="register.html">
+                Create Account
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <h2>
+        GlowHerb
+    </h2>
+
+    <p>
+        Natural beauty inspired by nature.
+    </p>
+
+    <p>
+        © 2026 GlowHerb. All rights reserved.
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================
+   LOGIN
+===================================== */
+
+function loginUser(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById(
+            "loginEmail"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+
+    /* GET REGISTERED USERS */
+
+    const users =
+        JSON.parse(
+            localStorage.getItem(
+                "glowherbUsers"
+            )
+        ) || [];
+
+
+    /* FIND USER */
+
+    const user =
+        users.find(function(item) {
+
+            return (
+                item.email === email &&
+                item.password === password
+            );
+
+        });
+
+
+    /* CHECK USER */
+
+    if (!user) {
+
+        alert(
+            "Invalid email or password. Please check your details."
+        );
+
+        return;
+
+    }
+
+
+    /* SAVE LOGGED-IN USER */
+
+    localStorage.setItem(
+        "loggedInUser",
+        JSON.stringify(user)
+    );
+
+
+    alert(
+        "Welcome back, " +
+        user.name +
+        "!"
+    );
+
+
+    /* OPEN ACCOUNT */
+
+    window.location.href =
+        "account.html";
+
+}
+
+
+/* =====================================
+   FORGOT PASSWORD
+===================================== */
+
+function forgotPassword() {
+
+    alert(
+        "Password reset is a demo feature in this static website."
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

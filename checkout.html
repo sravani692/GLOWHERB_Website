@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | GlowHerb</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f5ee;
+            color: #2f3e32;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #356859;
+        }
+
+        .nav {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: #356859;
+        }
+
+        /* PAGE */
+
+        .checkout-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-title h1 {
+            font-size: 36px;
+            color: #356859;
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            color: #777;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+        }
+
+        /* FORM */
+
+        .checkout-box {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .checkout-box h2 {
+            margin-bottom: 25px;
+            color: #356859;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* PAYMENT */
+
+        .payment-option {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .payment-option input {
+            margin-right: 10px;
+        }
+
+        /* ORDER SUMMARY */
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-item-name {
+            font-weight: 500;
+        }
+
+        .summary-item small {
+            color: #777;
+        }
+
+        .summary-total {
+            margin-top: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .summary-row.total {
+            font-size: 20px;
+            font-weight: bold;
+            color: #356859;
+            border-top: 1px solid #ddd;
+            padding-top: 18px;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            border: none;
+            background: #356859;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .place-order-btn:hover {
+            background: #284f42;
+        }
+
+        /* EMPTY */
+
+        .empty-checkout {
+            text-align: center;
+            background: white;
+            padding: 60px 20px;
+            border-radius: 14px;
+        }
+
+        .empty-checkout h2 {
+            color: #356859;
+            margin-bottom: 10px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background: #356859;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            background: #2f3e32;
+            color: white;
+            padding: 40px 7%;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer h2 {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            color: #ddd;
+            margin: 8px 0;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title h1 {
+                font-size: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+        GlowHerb
+    </div>
+
+    <ul class="nav">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="products.html">Products</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+        <li>
+            <a href="cart.html">Cart</a>
+        </li>
+
+        <li>
+            <a href="wishlist.html">Wishlist</a>
+        </li>
+
+        <li>
+            <a href="account.html">My Account</a>
+        </li>
+
+    </ul>
+
+</header>
+
+
+
+<!-- CHECKOUT -->
+
+<main class="checkout-container">
+
+    <div class="page-title">
+
+        <h1>Checkout</h1>
+
+        <p>
+            Complete your details and place your GlowHerb order.
+        </p>
+
+    </div>
+
+
+    <!-- EMPTY CART -->
+
+    <div
+        id="emptyCheckout"
+        class="empty-checkout"
+        style="display:none;"
+    >
+
+        <h2>Your Cart is Empty</h2>
+
+        <p>
+            Please add some products before checkout.
+        </p>
+
+        <a
+            href="products.html"
+            class="shop-btn"
+        >
+            Shop Products
+        </a>
+
+    </div>
+
+
+
+    <!-- CHECKOUT CONTENT -->
+
+    <div
+        id="checkoutContent"
+        class="checkout-grid"
+    >
+
+
+        <!-- CUSTOMER DETAILS -->
+
+        <div class="checkout-box">
+
+            <h2>Customer Details</h2>
+
+
+            <form
+                id="checkoutForm"
+                onsubmit="placeOrder(event)"
+            >
+
+
+                <div class="form-group">
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        required
+                        placeholder="Enter your full name"
+                    >
+
+                </div>
+
+
+
+                <div class="two-column">
+
+                    <div class="form-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="customerEmail"
+                            required
+                            placeholder="Enter your email"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Phone
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            required
+                            pattern="[0-9]{10}"
+                            placeholder="10 digit mobile number"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Address
+                    </label>
+
+                    <textarea
+                        id="customerAddress"
+                        required
+                        placeholder="Enter your complete address"
+                    ></textarea>
+
+                </div>
+
+
+
+                <div class="two-column">
+
+                    <div class="form-group">
+
+                        <label>
+                            City
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerCity"
+                            required
+                            placeholder="City"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            State
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerState"
+                            required
+                            placeholder="State"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Pincode
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerPincode"
+                        required
+                        pattern="[0-9]{6}"
+                        placeholder="6 digit pincode"
+                    >
+
+                </div>
+
+
+
+                <h2>
+                    Payment Method
+                </h2>
+
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Cash on Delivery"
+                        checked
+                    >
+
+                    Cash on Delivery
+
+                </label>
+
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Demo Online Payment"
+                    >
+
+                    Demo Online Payment
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="place-order-btn"
+                >
+                    Place Order
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+
+        <!-- ORDER SUMMARY -->
+
+        <div class="checkout-box">
+
+            <h2>
+                Order Summary
+            </h2>
+
+
+            <div id="orderItems">
+            </div>
+
+
+            <div class="summary-total">
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="subtotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <strong>
+                        Free
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="total">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <h2>
+        GlowHerb
+    </h2>
+
+    <p>
+        Natural beauty inspired by nature.
+    </p>
+
+    <p>
+        © 2026 GlowHerb. All rights reserved.
+    </p>
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================
+   LOAD CART
+===================================== */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
+
+
+/* =====================================
+   CHECK EMPTY CART
+===================================== */
+
+if (cart.length === 0) {
+
+    document.getElementById(
+        "checkoutContent"
+    ).style.display = "none";
+
+    document.getElementById(
+        "emptyCheckout"
+    ).style.display = "block";
+
+}
+
+
+/* =====================================
+   DISPLAY ORDER ITEMS
+===================================== */
+
+function displayOrderSummary() {
+
+    const orderItems =
+        document.getElementById(
+            "orderItems"
+        );
+
+    let subtotal = 0;
+
+
+    orderItems.innerHTML = "";
+
+
+    cart.forEach(function(item) {
+
+        const itemTotal =
+            item.price * item.quantity;
+
+
+        subtotal += itemTotal;
+
+
+        orderItems.innerHTML += `
+
+            <div class="summary-item">
+
+                <div>
+
+                    <div class="summary-item-name">
+                        ${item.name}
+                    </div>
+
+                    <small>
+                        Quantity: ${item.quantity}
+                    </small>
+
+                </div>
+
+                <strong>
+                    ₹${itemTotal}
+                </strong>
+
+            </div>
+
+        `;
+
+    });
+
+
+    document.getElementById(
+        "subtotal"
+    ).innerText =
+        "₹" + subtotal;
+
+
+    document.getElementById(
+        "total"
+    ).innerText =
+        "₹" + subtotal;
+
+}
+
+
+displayOrderSummary();
+
+
+
+/* =====================================
+   PLACE ORDER
+===================================== */
+
+function placeOrder(event) {
+
+    event.preventDefault();
+
+
+    if (cart.length === 0) {
+
+        alert(
+            "Your cart is empty."
+        );
+
+        return;
+
+    }
+
+
+    const name =
+        document.getElementById(
+            "customerName"
+        ).value.trim();
+
+
+    const email =
+        document.getElementById(
+            "customerEmail"
+        ).value.trim();
+
+
+    const phone =
+        document.getElementById(
+            "customerPhone"
+        ).value.trim();
+
+
+    const address =
+        document.getElementById(
+            "customerAddress"
+        ).value.trim();
+
+
+    const city =
+        document.getElementById(
+            "customerCity"
+        ).value.trim();
+
+
+    const state =
+        document.getElementById(
+            "customerState"
+        ).value.trim();
+
+
+    const pincode =
+        document.getElementById(
+            "customerPincode"
+        ).value.trim();
+
+
+    const paymentMethod =
+        document.querySelector(
+            'input[name="payment"]:checked'
+        ).value;
+
+
+
+    /* CALCULATE TOTAL */
+
+    let total = 0;
+
+
+    cart.forEach(function(item) {
+
+        total +=
+            item.price *
+            item.quantity;
+
+    });
+
+
+
+    /* CREATE ORDER */
+
+    const order = {
+
+        id:
+            "GH" +
+            Date.now(),
+
+        date:
+            new Date()
+                .toLocaleDateString(),
+
+        status:
+            "Order Placed",
+
+        items:
+            cart,
+
+        total:
+            total,
+
+        customer: {
+
+            name:
+                name,
+
+            email:
+                email,
+
+            phone:
+                phone,
+
+            address:
+                address,
+
+            city:
+                city,
+
+            state:
+                state,
+
+            pincode:
+                pincode
+
+        },
+
+        paymentMethod:
+            paymentMethod
+
+    };
+
+
+
+    /* GET OLD ORDERS */
+
+    let orders =
+        JSON.parse(
+            localStorage.getItem(
+                "glowherbOrders"
+            )
+        ) || [];
+
+
+    /* ADD NEW ORDER */
+
+    orders.push(order);
+
+
+    /* SAVE ORDERS */
+
+    localStorage.setItem(
+        "glowherbOrders",
+        JSON.stringify(orders)
+    );
+
+
+    /* CLEAR CART */
+
+    localStorage.removeItem(
+        "cart"
+    );
+
+
+    alert(
+        "🎉 Order placed successfully!"
+    );
+
+
+    /* GO TO ORDERS */
+
+    window.location.href =
+        "orders.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

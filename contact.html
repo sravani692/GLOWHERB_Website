@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GlowHerb - Contact Us</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #faf8f2;
+            color: #333;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            width: 100%;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #356859;
+        }
+
+
+        .nav {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+
+        .nav li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+        }
+
+
+        .nav li a:hover {
+            color: #356859;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .contact-hero {
+            background: #eef4e8;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+
+        .contact-hero h1 {
+            font-size: 44px;
+            color: #356859;
+            margin-bottom: 15px;
+        }
+
+
+        .contact-hero p {
+            color: #666;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+
+        /* ================= CONTACT SECTION ================= */
+
+        .contact-section {
+            width: 90%;
+            max-width: 1100px;
+            margin: 70px auto;
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 50px;
+        }
+
+
+        /* ================= CONTACT INFO ================= */
+
+        .contact-info h2 {
+            color: #356859;
+            font-size: 32px;
+            margin-bottom: 18px;
+        }
+
+
+        .contact-info > p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 18px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+
+        .info-card h3 {
+            color: #356859;
+            margin-bottom: 8px;
+        }
+
+
+        .info-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* ================= FORM ================= */
+
+        .contact-form {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+
+        .contact-form h2 {
+            color: #356859;
+            margin-bottom: 25px;
+        }
+
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            font-family: Arial, sans-serif;
+        }
+
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #356859;
+        }
+
+
+        .form-group textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            background: #356859;
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+
+        .submit-btn:hover {
+            background: #294f42;
+        }
+
+
+        /* ================= FAQ ================= */
+
+        .faq-section {
+            background: white;
+            padding: 70px 7%;
+            text-align: center;
+        }
+
+
+        .faq-section h2 {
+            color: #356859;
+            font-size: 32px;
+            margin-bottom: 35px;
+        }
+
+
+        .faq-container {
+            max-width: 800px;
+            margin: auto;
+            text-align: left;
+        }
+
+
+        .faq {
+            background: #faf8f2;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+
+        .faq h3 {
+            color: #356859;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+
+        .faq p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        .footer {
+            background: #263f36;
+            color: white;
+            padding: 50px 7% 20px;
+        }
+
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 35px;
+        }
+
+
+        .footer h3 {
+            color: #f0d9a0;
+            margin-bottom: 15px;
+        }
+
+
+        .footer p {
+            color: #ddd;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+
+        .footer ul {
+            list-style: none;
+        }
+
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+
+        .footer ul li a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+
+        .footer ul li a:hover {
+            color: white;
+        }
+
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            text-align: center;
+            color: #ccc;
+            font-size: 13px;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .contact-hero h1 {
+                font-size: 34px;
+            }
+
+
+            .contact-form {
+                padding: 25px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            GlowHerb
+        </div>
+
+
+        <ul class="nav">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="products.html">
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    Cart
+                </a>
+            </li>
+
+            <li>
+                <a href="wishlist.html">
+                    Wishlist
+                </a>
+            </li>
+
+            <li>
+                <a href="login.html">
+                    Login
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="contact-hero">
+
+        <h1>
+            Contact Us
+        </h1>
+
+        <p>
+            Have a question or need help?
+            We'd love to hear from you.
+        </p>
+
+    </section>
+
+
+
+    <!-- ================= CONTACT SECTION ================= -->
+
+    <section class="contact-section">
+
+
+        <!-- CONTACT INFORMATION -->
+
+        <div class="contact-info">
+
+            <h2>
+                Get In Touch
+            </h2>
+
+            <p>
+                Whether you have a question about our products,
+                your order, or anything else, our team is here
+                to help.
+            </p>
+
+
+            <div class="info-card">
+
+                <h3>
+                    📧 Email
+                </h3>
+
+                <p>
+                    support@glowherb.com
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <h3>
+                    📞 Phone
+                </h3>
+
+                <p>
+                    +91 98765 43210
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <h3>
+                    📍 Address
+                </h3>
+
+                <p>
+                    GlowHerb Beauty Studio<br>
+                    Guntur, Andhra Pradesh<br>
+                    India
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <h3>
+                    🕐 Working Hours
+                </h3>
+
+                <p>
+                    Monday - Saturday<br>
+                    9:00 AM - 6:00 PM
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CONTACT FORM -->
+
+        <div class="contact-form">
+
+            <h2>
+                Send Us a Message
+            </h2>
+
+
+            <form onsubmit="sendMessage(event)">
+
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        placeholder="Enter subject"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        placeholder="Write your message..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+                    Send Message
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FAQ ================= -->
+
+    <section class="faq-section">
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
+
+
+        <div class="faq-container">
+
+
+            <div class="faq">
+
+                <h3>
+                    How can I place an order?
+                </h3>
+
+                <p>
+                    Browse our products, add your favorite
+                    items to the cart and continue to checkout.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    Can I save products for later?
+                </h3>
+
+                <p>
+                    Yes. Click the heart icon on a product
+                    to save it to your Wishlist.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    How can I contact GlowHerb?
+                </h3>
+
+                <p>
+                    You can use the contact form above or
+                    reach us through email or phone.
+                </p>
+
+            </div>
+
+
+            <div class="faq">
+
+                <h3>
+                    Do you offer customer support?
+                </h3>
+
+                <p>
+                    Yes. Our support team is available during
+                    our working hours to help with your questions.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <div>
+
+                <h3>
+                    GlowHerb
+                </h3>
+
+                <p>
+                    Natural beauty products made for simple,
+                    healthy and beautiful everyday routines.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="products.html">
+                            Products
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Customer
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="cart.html">
+                            Cart
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="wishlist.html">
+                            Wishlist
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="login.html">
+                            Login
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 GlowHerb. All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById("name").value;
+
+
+            const email =
+                document.getElementById("email").value;
+
+
+            const subject =
+                document.getElementById("subject").value;
+
+
+            const message =
+                document.getElementById("message").value;
+
+
+            const contactMessage = {
+
+                name: name,
+
+                email: email,
+
+                subject: subject,
+
+                message: message
+
+            };
+
+
+            localStorage.setItem(
+                "contactMessage",
+                JSON.stringify(contactMessage)
+            );
+
+
+            alert(
+                "Thank you, " +
+                name +
+                "! Your message has been sent successfully."
+            );
+
+
+            document.querySelector("form").reset();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
